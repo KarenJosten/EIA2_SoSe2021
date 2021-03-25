@@ -15,9 +15,9 @@ var RandomPoem;
         let verse = "";
         let randomSubject = Math.floor(_subject.length * Math.random());
         //console.log(randomSubject);
-        let randomVerb = Math.floor(_predicates.length * Math.random());
+        let randomPredicates = Math.floor(_predicates.length * Math.random());
         let randomObject = Math.floor(_object.length * Math.random());
-        verse = _subject.splice(randomSubject, 1)[0] + " " + _predicates.splice(randomVerb, 1)[0] + " " + _object.splice(randomObject, 1)[0];
+        verse = _subject.splice(randomSubject, 1)[0] + " " + _predicates.splice(randomPredicates, 1)[0] + " " + _object.splice(randomObject, 1)[0];
         console.log(verse);
     }
 })(RandomPoem || (RandomPoem = {}));
