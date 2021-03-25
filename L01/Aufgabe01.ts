@@ -17,10 +17,10 @@ namespace RandomPoem {
         let verse: string = "";
         let randomSubject: number = Math.floor(_subject.length * Math.random());
         //console.log(randomSubject);
-        let randomVerb: number = Math.floor(_predicates.length * Math.random());
+        let randomPredicates: number = Math.floor(_predicates.length * Math.random());
         let randomObject: number = Math.floor(_object.length * Math.random());
 
-        verse = _subject.splice(randomSubject, 1)[0] + " " + _predicates.splice(randomVerb, 1)[0] + " " + _object.splice(randomObject, 1)[0];
+        verse = _subject.splice(randomSubject, 1)[0] + " " + _predicates.splice(randomPredicates, 1)[0] + " " + _object.splice(randomObject, 1)[0];
         console.log(verse);
     }
 }
