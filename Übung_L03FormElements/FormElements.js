@@ -115,11 +115,11 @@ var L03_FormElements;
         }
     ];
     function handleLoad() {
-        form = document.querySelector(".form");
+        form = document.querySelector("#form");
         form.addEventListener("change", handleChange);
-        button = document.querySelector(".button");
+        button = document.querySelector("#button");
         button.addEventListener("click", displayCards);
-        gameField = document.querySelector(".showGameField");
+        gameField = document.querySelector("#showGameField");
         //startTimer = setInterval(function(): void {timer += 1; }, 1000);
         shuffleCards(allCards);
     }

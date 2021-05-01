@@ -8,7 +8,7 @@ namespace L03_FormElements {
 
     let form: HTMLElement;
     let button: HTMLElement;
-    let gameField: HTMLDivElement;
+    let gameField: HTMLElement;
     //let timer: number = 0;
     //let startTimer: HTMLElement = <HTMLElement>.document.querySelector(".timer");
 
@@ -125,13 +125,13 @@ namespace L03_FormElements {
     ];
 
     function handleLoad(): void {
-        form = <HTMLElement>document.querySelector(".form");
+        form = <HTMLElement>document.querySelector("#form");
         form.addEventListener("change", handleChange);
 
-        button = <HTMLElement>document.querySelector(".button");
+        button = <HTMLElement>document.querySelector("#button");
         button.addEventListener("click", displayCards);
 
-        gameField = <HTMLDivElement>document.querySelector(".showGameField");
+        gameField = <HTMLDivElement>document.querySelector("#showGameField");
         
        //startTimer = setInterval(function(): void {timer += 1; }, 1000);
 
