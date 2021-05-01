@@ -1,0 +1,85 @@
+body {
+   /*  background-color: #e2b088; */
+    background-image: url(background.png);
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+    margin: 0 auto; 
+    border-radius: 30px;
+    margin-top: 150px;
+    display:grid;
+    justify-content: center;
+    font-family: 'Varela Round', sans-serif;
+}
+
+legend {
+    font-size: 25px;
+    font-family: 'Varela Round', sans-serif;
+}
+
+head {
+	display: none;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #854c0a;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 40spx;
+    width: 140px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+    .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+    .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+    .button:hover span {
+    padding-right: 25px;
+  }
+  
+    .button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+
+.showGameField {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 20px;
+    border: none;
+}
+ 
+.visibility {
+    visibility: hidden;
+}
+
+.hidden {
+	display: none;
+}
+
+ .field {
+    border-radius: 10px;
+    border-style: groove;
+    border-color: #000000;
+    width: 400px;
+} 

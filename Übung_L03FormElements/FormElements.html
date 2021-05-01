@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>FormElements</title>
+	<link rel="stylesheet" href="FormElements.css" type="text/css" media="screen" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="FormElements.js" type="text/javascript" charset="utf-8"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+</head>
+    <body>
+        <form id="form" class="form">
+            <fieldset class="field">
+            <legend>Style your Memory</legend><br>
+            Choose font:<br>
+            <div>
+            <input type="radio" name="Radiogroup" value="Arial" id="radio1" />
+            <label for="radio1">Arial</label>
+            <input type="radio" name="Radiogroup" value="Helvetica" id="radio2" />
+            <label for="radio2">Helvetica</label>
+            <input type="radio" name="Radiogroup" value="Calibri" id="radio3" />
+            <label for="radio3">Calibri</label>
+            <hr/>
+        </div>
+            Choose pair of memory cards:
+            <div>
+		        <input class="stepper" type="number" name="Stepper" step="1" min="5" max="25" value="5" />
+		    <hr />
+            </div>
+            Choose size of memory cards:
+            <div>
+		        <input class="slider" type="range" name="Slider" min="50" max="200" step="10" value="50" />
+		    <hr />
+            </div>
+            Choose background color
+            <div class="divBackgroung">
+		        <input class="backgroundColor" type="color" name="BackGroundColor" value="#ffe6cc">
+		    <hr />
+            </div>
+            Choose back color
+            <div>
+		        <input class="backColor" type="color" name="BackColor" value="#ff9933">
+		    <hr />
+            </div>
+            Choose font-color
+            <div> 
+		        <input class="fontColor" type="color" name="FontColor" value="#408000">
+		    <hr />
+            </div>
+            <button type="button" id="button" class="button" style="vertical-align:middle">start game</button>
+            </fieldset>
+        </form>
+        <p class="timer"></p>
+        <div id="showGameField" class="showGameField"></div>
+    </body>
+</html>
