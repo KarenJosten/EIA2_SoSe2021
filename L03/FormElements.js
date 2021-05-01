@@ -1,4 +1,6 @@
 "use strict";
+//nach 10 Stunden am Stück habe ich aufgegeben.. es wird nur die Hintergrundfarbe angezeigt und keine Karten
+//werde die Aufgabe nachreichen
 var L03_FormElements;
 (function (L03_FormElements) {
     window.addEventListener("load", handleLoad);
@@ -170,4 +172,8 @@ var L03_FormElements;
         return _array;
     }
 })(L03_FormElements || (L03_FormElements = {}));
+/* function endGame(): void {
+        alert("You are the winner!");
+        window.location.reload();
+    } */ 
 //# sourceMappingURL=FormElements.js.map

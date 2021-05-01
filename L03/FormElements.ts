@@ -1,3 +1,6 @@
+//nach 10 Stunden am Stück habe ich aufgegeben.. es wird nur die Hintergrundfarbe angezeigt und keine Karten
+//werde die Aufgabe nachreichen
+
 namespace L03_FormElements {
 
     window.addEventListener("load", handleLoad);
@@ -9,8 +12,6 @@ namespace L03_FormElements {
     let form: HTMLElement;
     let button: HTMLElement;
     let gameField: HTMLElement;
-    //let timer: number = 0;
-    //let startTimer: HTMLElement = <HTMLElement>.document.querySelector(".timer");
 
     interface Card {
         value: number;
@@ -198,3 +199,8 @@ namespace L03_FormElements {
     }
 
 }
+
+/* function endGame(): void {
+        alert("You are the winner!");
+        window.location.reload();
+    } */
