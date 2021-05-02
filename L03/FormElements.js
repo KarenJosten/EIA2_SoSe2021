@@ -1,6 +1,4 @@
 "use strict";
-//nach 10 Stunden am Stück habe ich aufgegeben.. es wird nur die Hintergrundfarbe angezeigt und keine Karten
-//werde die Aufgabe nachreichen
 var L03_FormElements;
 (function (L03_FormElements) {
     window.addEventListener("load", handleLoad);
@@ -136,7 +134,7 @@ var L03_FormElements;
     function displayCards() {
         form.classList.add("hidden");
         button.classList.add("hidden");
-        numberPairs = Number(propCards[0]);
+        numberPairs = Number(propCards[1]);
         for (let i = 0; i < 2; i++) {
             for (let k = 0; k < numberPairs; k++) {
                 allCards.push(cards[k]);

@@ -1,6 +1,3 @@
-//nach 10 Stunden am Stück habe ich aufgegeben.. es wird nur die Hintergrundfarbe angezeigt und keine Karten
-//werde die Aufgabe nachreichen
-
 namespace L03_FormElements {
 
     window.addEventListener("load", handleLoad);
@@ -152,7 +149,7 @@ namespace L03_FormElements {
         form.classList.add("hidden");
         button.classList.add("hidden");
 
-        numberPairs = Number(propCards[0]);
+        numberPairs = Number(propCards[1]);
 
         for (let i: number = 0; i < 2; i++) {
             for (let k: number = 0; k < numberPairs; k++) {
