@@ -19,7 +19,7 @@ namespace Blumenwiese {
        
         drawBackground();
         drawSun({ x: 800, y: 250 });
-        drawCloud({ x: 700, y: 350 }, { x: 400, y: 100 });
+        drawCloud({ x: 550, y: 250 });
         drawMountains(posMountains, 75, 200, "#8c8c8c", "white");
         drawMountains(posMountains, 50, 150, "#8c8c8c", "lightgrey");
         drawFence({ x: 0, y: 500});
@@ -275,8 +275,8 @@ namespace Blumenwiese {
         let r2: number = 200;
         let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
 
-        gradient.addColorStop(0, "HSLA(40, 100%, 90%, 1)");
-        gradient.addColorStop(1, "HSLA(30, 100%, 70%, 0)");
+        gradient.addColorStop(0, "HSLA(30, 100%, 90%, 1)");
+        gradient.addColorStop(1, "HSLA(20, 60%, 70%, 0)");
 
         crc2.save();
         crc2.translate(_position.x, _position.y);
@@ -286,29 +286,39 @@ namespace Blumenwiese {
         crc2.restore();
     }
 
-    function drawCloud(_position: Vector, _size: Vector): void {
-        let radiusParticle: number = 70;
-        let particle: Path2D = new Path2D();
-        let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
+    function drawCloud(_position: Vector): void {
 
-        particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI);
-        gradient.addColorStop(0, "HSLA(0, 100%, 100%, 1)");
-        gradient.addColorStop(1, "HSLA(0, 100%, 100%, 0)");
+        crc2.fillStyle = "white";
+        crc2.beginPath();
+        crc2.arc(_position.x + 50, _position.y, 50, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.closePath();
 
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.fillStyle = gradient;
+        crc2.beginPath();
+        crc2.arc(_position.x, _position.y + 50, 50, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.closePath();
 
-        for (let drawn: number = 0; drawn < 20; drawn++) {
-            crc2.save();
-            let x: number = (Math.random() - 0.8) * _size.x;
-            let y: number = - (Math.random() * _size.y);
-            crc2.translate(x, y);
-            crc2.fill(particle);
-            crc2.restore();
-        }
-        crc2.restore();
-    }
+        crc2.beginPath();
+        crc2.arc(_position.x + 130, _position.y, 50, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.closePath();
+
+        crc2.beginPath();
+        crc2.arc(_position.x + 210, _position.y + 50, 50, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.closePath();
+
+        crc2.beginPath();
+        crc2.arc(_position.x + 150, _position.y + 80, 50, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.closePath();
+
+        crc2.beginPath();
+        crc2.arc(_position.x + 80, _position.y + 80, 50, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.closePath();
+    } 
 
     function drawMountains(_position: Vector, _min: number, _max: number, _colorLow: string, _colorHigh: string): void {
         let stepMin: number = 50;
