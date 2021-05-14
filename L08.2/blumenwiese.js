@@ -63,7 +63,7 @@ var Blumenwiese;
         crc2.strokeStyle = "RGB(94,47,0)";
         crc2.stroke();
         crc2.closePath();
-        crc2.fillStyle = "green";
+        crc2.fillStyle = "#487047";
         crc2.beginPath();
         crc2.arc(_position.x + 150, _position.y - 100, 45, 0, 2 * Math.PI);
         crc2.fill();
