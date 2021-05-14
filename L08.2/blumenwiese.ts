@@ -15,10 +15,11 @@ namespace Blumenwiese {
 
         let horizon: number = crc2.canvas.height * golden;
         let posMountains: Vector = { x: 0, y: horizon };
+        
        
         drawBackground();
         drawSun({ x: 800, y: 250 });
-        drawCloud({ x: 700, y: 400 }, { x: 900, y: 100 });
+        drawCloud({ x: 700, y: 350 }, { x: 400, y: 100 });
         drawMountains(posMountains, 75, 200, "#8c8c8c", "white");
         drawMountains(posMountains, 50, 150, "#8c8c8c", "lightgrey");
         drawFence({ x: 0, y: 500});
@@ -27,6 +28,7 @@ namespace Blumenwiese {
         drawTree({x: 280, y: 480});
         drawSunflower({x: 0, y: 520});
         drawFlower({x: 0, y: 580});
+
     }
 
     function drawTree(_position: Vector): void {
@@ -285,23 +287,21 @@ namespace Blumenwiese {
     }
 
     function drawCloud(_position: Vector, _size: Vector): void {
-
-        let nParticles: number = 50;
-        let radiusParticle: number = 100;
+        let radiusParticle: number = 70;
         let particle: Path2D = new Path2D();
         let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
 
         particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI);
-        gradient.addColorStop(0, "HSLA(0, 100%, 100%, 0.5)");
+        gradient.addColorStop(0, "HSLA(0, 100%, 100%, 1)");
         gradient.addColorStop(1, "HSLA(0, 100%, 100%, 0)");
 
         crc2.save();
         crc2.translate(_position.x, _position.y);
         crc2.fillStyle = gradient;
 
-        for (let drawn: number = 0; drawn < nParticles; drawn++) {
+        for (let drawn: number = 0; drawn < 20; drawn++) {
             crc2.save();
-            let x: number = (Math.random() - 0.5) * _size.x;
+            let x: number = (Math.random() - 0.8) * _size.x;
             let y: number = - (Math.random() * _size.y);
             crc2.translate(x, y);
             crc2.fill(particle);
@@ -338,7 +338,6 @@ namespace Blumenwiese {
 
         crc2.fillStyle = gradient;
         crc2.fill();
-
         crc2.restore();
     }
 
@@ -361,4 +360,21 @@ namespace Blumenwiese {
         crc2.fill();
         crc2.closePath();
     }
+ 
+   /*  var x: number = 0;
+
+    function drawBiene(_x: number): void {
+        //crc2.clearRect(0, 0, 1000, 900);
+        crc2.save();
+        crc2.beginPath();
+        crc2.ellipse(x, 600, 5, 10, 1, 20, 40);
+        crc2.fillStyle = "yellow";
+        crc2.fill();
+    }
+
+    setInterval(function(): void { 
+    //crc2.clearRect(0, 0, 1000, 900);
+    drawBiene(x % 1000);
+    x++;
+    },          25); */
 }
