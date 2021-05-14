@@ -11,7 +11,7 @@ var Blumenwiese;
         let posMountains = { x: 0, y: horizon };
         drawBackground();
         drawSun({ x: 800, y: 250 });
-        drawCloud({ x: 700, y: 400 }, { x: 900, y: 100 });
+        drawCloud({ x: 700, y: 350 }, { x: 400, y: 100 });
         drawMountains(posMountains, 75, 200, "#8c8c8c", "white");
         drawMountains(posMountains, 50, 150, "#8c8c8c", "lightgrey");
         drawFence({ x: 0, y: 500 });
@@ -232,19 +232,18 @@ var Blumenwiese;
         crc2.restore();
     }
     function drawCloud(_position, _size) {
-        let nParticles = 50;
-        let radiusParticle = 100;
+        let radiusParticle = 70;
         let particle = new Path2D();
         let gradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
         particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI);
-        gradient.addColorStop(0, "HSLA(0, 100%, 100%, 0.5)");
+        gradient.addColorStop(0, "HSLA(0, 100%, 100%, 1)");
         gradient.addColorStop(1, "HSLA(0, 100%, 100%, 0)");
         crc2.save();
         crc2.translate(_position.x, _position.y);
         crc2.fillStyle = gradient;
-        for (let drawn = 0; drawn < nParticles; drawn++) {
+        for (let drawn = 0; drawn < 20; drawn++) {
             crc2.save();
-            let x = (Math.random() - 0.5) * _size.x;
+            let x = (Math.random() - 0.8) * _size.x;
             let y = -(Math.random() * _size.y);
             crc2.translate(x, y);
             crc2.fill(particle);
@@ -294,5 +293,21 @@ var Blumenwiese;
         crc2.fill();
         crc2.closePath();
     }
+    /*  var x: number = 0;
+ 
+     function drawBiene(_x: number): void {
+         //crc2.clearRect(0, 0, 1000, 900);
+         crc2.save();
+         crc2.beginPath();
+         crc2.ellipse(x, 600, 5, 10, 1, 20, 40);
+         crc2.fillStyle = "yellow";
+         crc2.fill();
+     }
+ 
+     setInterval(function(): void {
+     //crc2.clearRect(0, 0, 1000, 900);
+     drawBiene(x % 1000);
+     x++;
+     },          25); */
 })(Blumenwiese || (Blumenwiese = {}));
 //# sourceMappingURL=blumenwiese.js.map
