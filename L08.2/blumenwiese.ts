@@ -62,7 +62,7 @@ namespace Blumenwiese {
         crc2.restore();
         crc2.closePath();
 
-        //second tree
+        //second tree ------ nicht mehr wie im Activity Diagram
         crc2.save();
         crc2.beginPath();
         crc2.rect(_position.x + 200, _position.y - 20, 20, 120); 
@@ -308,6 +308,7 @@ namespace Blumenwiese {
         crc2.restore();
     }
 
+    //nicht mehr wie im Activity Diagram
     function drawCloud(_position: Vector): void {
 
         crc2.fillStyle = "white";
