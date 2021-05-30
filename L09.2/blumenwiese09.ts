@@ -343,12 +343,12 @@ namespace BlumenwieseL09 {
         }
 
         for (let flower of flowers) {
-            flower.move(1);
+            //flower.move(1);
             flower.drawFlower();
         }
 
         for (let sunflower of sunFlowers) {
-            sunflower.move(1);
+            //sunflower.move(1);
             sunflower.drawSunflower();
         }
 
