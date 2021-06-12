@@ -1,17 +1,14 @@
 "use strict";
 var BlumenwieseL10;
 (function (BlumenwieseL10) {
-    class Flower extends BlumenwieseL10.Flowers {
-        constructor(_size, _position) {
-            super(_position);
+    class Flower {
+        constructor() {
             let x = 1000 * Math.random();
             let y = 300 * Math.random() + 920 * BlumenwieseL10.golden;
             this.position = new BlumenwieseL10.Vector(x, y);
-            if (_position)
-                this.position = _position;
-            else
-                this.position = new BlumenwieseL10.Vector(this.x, this.y);
-            this.size = _size;
+            this.color = this.getRandomColor();
+            this.yellowcolor = this.getRandomYellowColor();
+            this.size = 10;
         }
         drawFlower() {
             BlumenwieseL10.crc2.beginPath();

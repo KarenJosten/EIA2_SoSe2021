@@ -3,28 +3,15 @@ namespace BlumenwieseL10 {
         color: string;
         position: Vector;
         size: number;
-        velocity: Vector;
 
         constructor() {
             let x: number = 1000 * Math.random();
             let y: number = 150 * Math.random() + 800 * golden;
             this.position = new Vector(x, y);
 
-            //Geschwindigkeit und Richtung
-            this.velocity = new Vector(-0.3, 0);
-
             this.size = 5;
             this.color = "yellow";
     }
-
-    move(_timeslice: number): void {
-        this.position.add(this.velocity);
-
-        if (this.position.x < 0)
-        this.position.x += crc2.canvas.width;
-        if (this.position.y > 900)
-        this.position.y -= 500 * golden;
-}
 
     drawSunflower(): void {    
 
