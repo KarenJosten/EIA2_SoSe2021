@@ -5,8 +5,6 @@ namespace BlumenwieseL10 {
         size: number;
         velocity: Vector;
 
-        drawnClouds: Vector[] = [];
-
             constructor(_size?: number, _position?: Vector) {
             super(_position);
 
@@ -56,13 +54,6 @@ namespace BlumenwieseL10 {
         crc2.arc(this.position.x + 80, this.position.y + 80, 50, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();
-
-        for (let drawn of this.drawnClouds) {
-            crc2.save();
-            crc2.translate(drawn.x, drawn.y);
-            crc2.fill();
-            crc2.restore();
-    }
 }
 }
 }

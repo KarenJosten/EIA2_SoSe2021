@@ -4,7 +4,6 @@ var BlumenwieseL10;
     class Cloud extends BlumenwieseL10.Moveable {
         constructor(_size, _position) {
             super(_position);
-            this.drawnClouds = [];
             let x = 1000 * Math.random() * 3;
             let y = 100;
             if (_position)
@@ -42,12 +41,6 @@ var BlumenwieseL10;
             BlumenwieseL10.crc2.arc(this.position.x + 80, this.position.y + 80, 50, 0, 2 * Math.PI);
             BlumenwieseL10.crc2.fill();
             BlumenwieseL10.crc2.closePath();
-            for (let drawn of this.drawnClouds) {
-                BlumenwieseL10.crc2.save();
-                BlumenwieseL10.crc2.translate(drawn.x, drawn.y);
-                BlumenwieseL10.crc2.fill();
-                BlumenwieseL10.crc2.restore();
-            }
         }
     }
     BlumenwieseL10.Cloud = Cloud;
