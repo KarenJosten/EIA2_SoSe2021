@@ -1,6 +1,6 @@
 namespace BlumenwieseL10 {
 
-    export class Bee { //damit blumenwiese09 darauf zureifen kann muss man die Datei exportieren
+    export class Bee extends Moveable { //damit blumenwiese09 darauf zureifen kann muss man die Datei exportieren
         color: string;
         colortwo: string;
         colorwings: string;
@@ -8,10 +8,11 @@ namespace BlumenwieseL10 {
         size: number;
         velocity: Vector;
 
-        constructor() {
+        constructor(_size?: number, _position?: Vector) {
+            super(_position);
             let x: number = 900;
             let y: number = 520;
-            this.position = new Vector(x, y);
+            //this.position = new Vector(x, y);
 
             this.color = "yellow";
             this.colortwo = "black";
@@ -19,19 +20,22 @@ namespace BlumenwieseL10 {
 
             let a: number = - Math.random() * 3;
             let b: number = Math.random() * 3;
-            this.velocity = new Vector(a, b);
 
             this.size = 15;
-    }
+             //position
+            if (_position) 
+             this.position = _position; //position, wie deklaiert
+            else
+             this.position = new Vector(x, y); //position, wenn kein Vektor angegeben ist
+             
+         //geschwindigkeit
+            this.velocity = new Vector(1000, 0); //Geschwindigkeit
+            this.velocity = new Vector(a, b);
+        }
+
         move(_timeslice: number): void {
         this.position.add(this.velocity);
 
-        //ohne Kollision
-        /* if (this.position.x < 0)
-        this.position.x += crc2.canvas.width;
-        if (this.position.y > 900)
-        this.position.y -= crc2.canvas.height;
-        } */
         //mit Kollision
         if (this.position.x + this.size > 1000 || this.position.x - this.size < 0) {
             this.velocity.x = -this.velocity.x;
