@@ -4,7 +4,6 @@ var BlumenwieseL10;
     window.addEventListener("load", handleLoad);
     BlumenwieseL10.golden = 0.62;
     let sunFlowers = [];
-    let bees = [];
     let moveables = [];
     let flowers = [];
     function handleLoad(_event) {
@@ -22,10 +21,11 @@ var BlumenwieseL10;
         drawBeeHouse({ x: 850, y: 500 });
         let background = BlumenwieseL10.crc2.getImageData(0, 0, 1000, 900);
         drawClouds();
+        drawBee();
         //drawClouds(1);
-        drawFlower(20);
+        drawFlower();
         drawSunflower(5);
-        drawBee(15);
+        //drawBee(15);
         window.setInterval(update, 20, background);
     }
     function drawBeeHouse(_position) {
@@ -169,33 +169,35 @@ var BlumenwieseL10;
         BlumenwieseL10.crc2.restore();
         BlumenwieseL10.crc2.closePath();
     }
-    function drawFlower(_nFlower) {
-        for (let i = 0; i < _nFlower; i++) {
-            let flower = new BlumenwieseL10.Flower(10); //neue BLume erstellen, wird in array gepusht
-            flowers.push(flower);
-        }
-    }
+    /*     function drawFlower(_nFlower: number): void {
+            for (let i: number = 0; i < _nFlower; i++) {
+                let flower: Flower = new Flower(10); //neue BLume erstellen, wird in array gepusht
+                flowers.push(flower);
+            }
+        } */
     function drawSunflower(_nSunflower) {
         for (let i = 0; i < _nSunflower; i++) {
             let sunflower = new BlumenwieseL10.SunFlower();
             sunFlowers.push(sunflower);
         }
     }
-    function drawBee(_nBees) {
-        for (let i = 0; i < _nBees; i++) {
-            let bee = new BlumenwieseL10.Bee();
-            bees.push(bee);
-        }
-    }
-    /*  function drawClouds(_nClouds: number): void {
-         for (let i:  number = 0; i < _nClouds; i++) {
-             let cloud: Cloud = new Cloud();
-             moveables.push(cloud);
-     }
- } */
+    /*  function drawBee(_nBees: number): void {
+         for (let i:  number = 0; i < _nBees; i++) {
+             let bee: Bee = new Bee();
+             bees.push(bee);
+         }
+     } */
     function drawClouds() {
         let cloud = new BlumenwieseL10.Cloud();
         moveables.push(cloud);
+    }
+    function drawBee() {
+        let bee = new BlumenwieseL10.Bee(50);
+        moveables.push(bee);
+    }
+    function drawFlower() {
+        let flower = new BlumenwieseL10.Flower(10); //neue BLume erstellen, wird in array gepusht
+        flowers.push(flower);
     }
     function drawBackground() {
         let gradient = BlumenwieseL10.crc2.createLinearGradient(0, 0, 0, BlumenwieseL10.crc2.canvas.height);
@@ -287,16 +289,19 @@ var BlumenwieseL10;
             if (moveable instanceof BlumenwieseL10.Cloud) {
                 moveable.move(1 / 50);
             }
+            if (moveable instanceof BlumenwieseL10.Bee) {
+                moveable.move(1 / 50);
+            }
             //moveable.move(1 / 50);
         }
         for (let sunflower of sunFlowers) {
             //sunflower.move(1);
             sunflower.drawSunflower();
         }
-        for (let bee of bees) {
-            bee.move(1);
-            bee.drawBee();
-        }
+        /*  for (let bee of bees) {
+             bee.move(1);
+             bee.drawBee();
+         } */
     }
 })(BlumenwieseL10 || (BlumenwieseL10 = {}));
 //# sourceMappingURL=blumenwiese09.js.map

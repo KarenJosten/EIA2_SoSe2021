@@ -1,27 +1,29 @@
 "use strict";
 var BlumenwieseL10;
 (function (BlumenwieseL10) {
-    class Bee {
-        constructor() {
+    class Bee extends BlumenwieseL10.Moveable {
+        constructor(_size, _position) {
+            super(_position);
             let x = 900;
             let y = 520;
-            this.position = new BlumenwieseL10.Vector(x, y);
+            //this.position = new Vector(x, y);
             this.color = "yellow";
             this.colortwo = "black";
             this.colorwings = "rgba(255, 255, 255, 0.5)";
             let a = -Math.random() * 3;
             let b = Math.random() * 3;
-            this.velocity = new BlumenwieseL10.Vector(a, b);
             this.size = 15;
+            //position
+            if (_position)
+                this.position = _position; //position, wie deklaiert
+            else
+                this.position = new BlumenwieseL10.Vector(x, y); //position, wenn kein Vektor angegeben ist
+            //geschwindigkeit
+            this.velocity = new BlumenwieseL10.Vector(1000, 0); //Geschwindigkeit
+            this.velocity = new BlumenwieseL10.Vector(a, b);
         }
         move(_timeslice) {
             this.position.add(this.velocity);
-            //ohne Kollision
-            /* if (this.position.x < 0)
-            this.position.x += crc2.canvas.width;
-            if (this.position.y > 900)
-            this.position.y -= crc2.canvas.height;
-            } */
             //mit Kollision
             if (this.position.x + this.size > 1000 || this.position.x - this.size < 0) {
                 this.velocity.x = -this.velocity.x;

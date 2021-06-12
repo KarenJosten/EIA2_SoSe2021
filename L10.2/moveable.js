@@ -2,16 +2,12 @@
 var BlumenwieseL10;
 (function (BlumenwieseL10) {
     class Moveable {
-        constructor(_position, _velocity) {
+        constructor(_position) {
             let x = 1000 * Math.random() * 3;
             let y = 100;
             this.position = new BlumenwieseL10.Vector(x, y);
             //Geschwindigkeit und Richtung
             this.velocity = new BlumenwieseL10.Vector(1, 0);
-            let a = -Math.random() * 3;
-            let b = Math.random() * 3;
-            this.velocity = new BlumenwieseL10.Vector(a, b);
-            this.color = "white";
         }
         move(_timeslice) {
             this.position.add(this.velocity);

@@ -4,7 +4,6 @@ namespace BlumenwieseL10 {
     export let crc2: CanvasRenderingContext2D;
     export let golden: number = 0.62;
     let sunFlowers: SunFlower[] = [];
-    let bees: Bee[] = [];
     let moveables: Moveable[] = [];
     let flowers: Flower[] = [];
 
@@ -33,10 +32,11 @@ namespace BlumenwieseL10 {
         let background: ImageData = crc2.getImageData(0, 0, 1000, 900);
 
         drawClouds();
+        drawBee();
         //drawClouds(1);
-        drawFlower(20);
+        drawFlower();
         drawSunflower(5);
-        drawBee(15);
+        //drawBee(15);
 
         window.setInterval(update, 20, background);
 
@@ -210,12 +210,12 @@ namespace BlumenwieseL10 {
         crc2.closePath();  
     }
 
-    function drawFlower(_nFlower: number): void {
+/*     function drawFlower(_nFlower: number): void {
         for (let i: number = 0; i < _nFlower; i++) {
             let flower: Flower = new Flower(10); //neue BLume erstellen, wird in array gepusht
             flowers.push(flower);
         }
-    }
+    } */
 
     function drawSunflower(_nSunflower: number): void {
         for (let i:  number = 0; i < _nSunflower; i++) {
@@ -224,23 +224,25 @@ namespace BlumenwieseL10 {
         }
     }
 
-    function drawBee(_nBees: number): void {
+   /*  function drawBee(_nBees: number): void {
         for (let i:  number = 0; i < _nBees; i++) {
             let bee: Bee = new Bee();
             bees.push(bee);
         }
-    }
-
-   /*  function drawClouds(_nClouds: number): void {
-        for (let i:  number = 0; i < _nClouds; i++) {
-            let cloud: Cloud = new Cloud();
-            moveables.push(cloud);
-    } 
-} */
+    } */
     function drawClouds(): void {
-        
         let cloud: Cloud = new Cloud();
         moveables.push(cloud);
+    }
+
+    function drawBee(): void {
+        let bee: Bee = new Bee(50);
+        moveables.push(bee);
+    }
+
+    function drawFlower(): void {
+            let flower: Flower = new Flower(10); //neue BLume erstellen, wird in array gepusht
+            flowers.push(flower);
     }
 
     function drawBackground(): void {
@@ -352,6 +354,9 @@ namespace BlumenwieseL10 {
             if (moveable instanceof Cloud) {
                 moveable.move(1 / 50);
             }
+            if (moveable instanceof Bee) {
+                moveable.move(1 / 50);
+            }
             //moveable.move(1 / 50);
         }
 
@@ -360,9 +365,9 @@ namespace BlumenwieseL10 {
             sunflower.drawSunflower();
         }
 
-        for (let bee of bees) {
+       /*  for (let bee of bees) {
             bee.move(1);
             bee.drawBee();
-        }
+        } */
     }
 }
