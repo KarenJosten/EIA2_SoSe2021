@@ -12,24 +12,14 @@ namespace BlumenwieseL10 {
             super(_position);
             let x: number = 900;
             let y: number = 520;
-            //this.position = new Vector(x, y);
-
-            this.color = "yellow";
-            this.colortwo = "black";
-            this.colorwings = "rgba(255, 255, 255, 0.5)";
-
             let a: number = - Math.random() * 3;
             let b: number = Math.random() * 3;
 
-            this.size = 15;
-             //position
             if (_position) 
-             this.position = _position; //position, wie deklaiert
+             this.position = _position;
             else
-             this.position = new Vector(x, y); //position, wenn kein Vektor angegeben ist
-             
-         //geschwindigkeit
-            this.velocity = new Vector(1000, 0); //Geschwindigkeit
+             this.position = new Vector(x, y);
+            
             this.velocity = new Vector(a, b);
         }
 
@@ -45,7 +35,11 @@ namespace BlumenwieseL10 {
         }
     }
 
-        drawBee(): void { 
+        draw(): void { 
+        this.color = "yellow";
+        this.colortwo = "black";
+        this.colorwings = "rgba(255, 255, 255, 0.5)";
+        this.size = 15;
 
         //first wing
         crc2.beginPath();

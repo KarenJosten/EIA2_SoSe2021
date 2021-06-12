@@ -6,17 +6,8 @@ var BlumenwieseL10;
             let x = 1000 * Math.random();
             let y = 150 * Math.random() + 800 * BlumenwieseL10.golden;
             this.position = new BlumenwieseL10.Vector(x, y);
-            //Geschwindigkeit und Richtung
-            this.velocity = new BlumenwieseL10.Vector(-0.3, 0);
             this.size = 5;
             this.color = "yellow";
-        }
-        move(_timeslice) {
-            this.position.add(this.velocity);
-            if (this.position.x < 0)
-                this.position.x += BlumenwieseL10.crc2.canvas.width;
-            if (this.position.y > 900)
-                this.position.y -= 500 * BlumenwieseL10.golden;
         }
         drawSunflower() {
             BlumenwieseL10.crc2.beginPath();

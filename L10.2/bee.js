@@ -6,20 +6,12 @@ var BlumenwieseL10;
             super(_position);
             let x = 900;
             let y = 520;
-            //this.position = new Vector(x, y);
-            this.color = "yellow";
-            this.colortwo = "black";
-            this.colorwings = "rgba(255, 255, 255, 0.5)";
             let a = -Math.random() * 3;
             let b = Math.random() * 3;
-            this.size = 15;
-            //position
             if (_position)
-                this.position = _position; //position, wie deklaiert
+                this.position = _position;
             else
-                this.position = new BlumenwieseL10.Vector(x, y); //position, wenn kein Vektor angegeben ist
-            //geschwindigkeit
-            this.velocity = new BlumenwieseL10.Vector(1000, 0); //Geschwindigkeit
+                this.position = new BlumenwieseL10.Vector(x, y);
             this.velocity = new BlumenwieseL10.Vector(a, b);
         }
         move(_timeslice) {
@@ -32,7 +24,11 @@ var BlumenwieseL10;
                 this.velocity.y = -this.velocity.y;
             }
         }
-        drawBee() {
+        draw() {
+            this.color = "yellow";
+            this.colortwo = "black";
+            this.colorwings = "rgba(255, 255, 255, 0.5)";
+            this.size = 15;
             //first wing
             BlumenwieseL10.crc2.beginPath();
             BlumenwieseL10.crc2.arc(this.position.x - 5, this.position.y - 15, this.size, 1, 1 * Math.PI);
