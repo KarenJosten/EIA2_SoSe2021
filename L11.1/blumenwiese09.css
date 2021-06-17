@@ -1,0 +1,34 @@
+body {
+    justify-content: center;
+    text-align: center;
+    background-color: #8e9775;
+}
+
+canvas {
+    background-color: #8e9775;
+    border: 10px double HSLA(40, 100%, 90%, 1);
+    box-shadow: 1px 1px 50px rgba(0,0,0,0.4);
+    border-radius: 20px; 
+    max-width: 55%;
+}
+
+button {
+    margin-bottom: 10px;
+    display:inline-block;
+    padding:0.46em 1.6em;
+    border: 0.1em solid HSLA(40, 100%, 90%, 1);
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #faf2da;
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.3);
+    text-align: center;
+    transition: all 0.15s;
+    background-color: #4a503d;
+}
+
+button:hover {
+    text-shadow: 0 0 2em rgba(100,100,100,1);
+    color: HSLA(40, 100%, 90%, 1);
+    border-color: HSLA(40, 100%, 90%, 1);
+}
