@@ -62,6 +62,16 @@ var BlumenwieseL11;
             //crc2.fillRect(this.position.x + 20, this.position.y + 20, 8, 0 - this.nectarLiter);
             BlumenwieseL11.crc2.fillRect(230, 350, 8, 0 - this.nectarLiterSunflower);
             BlumenwieseL11.crc2.closePath();
+            BlumenwieseL11.crc2.beginPath();
+            BlumenwieseL11.crc2.strokeStyle = "white";
+            BlumenwieseL11.crc2.lineWidth = 0.5;
+            BlumenwieseL11.crc2.moveTo(230, 350);
+            BlumenwieseL11.crc2.lineTo(238, 350);
+            BlumenwieseL11.crc2.lineTo(238, 299);
+            BlumenwieseL11.crc2.lineTo(230, 299);
+            BlumenwieseL11.crc2.lineTo(230, 350);
+            BlumenwieseL11.crc2.stroke();
+            BlumenwieseL11.crc2.closePath();
         }
     }
     BlumenwieseL11.SunFlower = SunFlower;
