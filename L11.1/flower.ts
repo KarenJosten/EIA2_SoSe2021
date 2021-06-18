@@ -1,4 +1,4 @@
-namespace BlumenwieseL10 {
+namespace BlumenwieseL11 {
 
     export class SmallFlower extends Flower { //damit blumenwiese09 darauf zureifen kann muss man die Datei exportieren
         color: string;
@@ -15,7 +15,7 @@ namespace BlumenwieseL10 {
             let y: number = 300 * Math.random() + 920 * golden;
             this.color = this.getRandomColor();
             this.yellowcolor = this.getRandomYellowColor();
-            this.colorNectar = "RGB(255,127,80)";
+            this.colorNectar = "white";
 
             if (_position) 
                 this.position = _position;
@@ -62,9 +62,16 @@ namespace BlumenwieseL10 {
                 crc2.closePath();
                 
                 //Nektar
-                crc2.beginPath();
+                /* crc2.beginPath();
                 crc2.fillStyle = this.colorNectar;
                 crc2.fillRect(this.position.x + 20, this.position.y + 20, 8, 0 - this.nectarLiter);
+                crc2.closePath(); */
+
+                 //Nektar
+                crc2.beginPath();
+                crc2.fillStyle = this.colorNectar;
+                crc2.fillText("Nectar flower: " + Math.floor(this.nectarLiter) + " liter", 20, 280, 200);
+                crc2.fillRect(230, 280, 8, 0 - this.nectarLiter);
                 crc2.closePath();
     }
 

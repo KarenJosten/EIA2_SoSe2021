@@ -1,4 +1,4 @@
-namespace BlumenwieseL10 {
+namespace BlumenwieseL11 {
     window.addEventListener("load", handleLoad);
 
     export let crc2: CanvasRenderingContext2D;

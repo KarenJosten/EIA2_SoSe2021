@@ -1,4 +1,4 @@
-namespace BlumenwieseL10 {
+namespace BlumenwieseL11 {
 
     export class Cloud extends Moveable {
         position: Vector;
