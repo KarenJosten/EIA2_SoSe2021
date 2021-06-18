@@ -1,4 +1,4 @@
-namespace BlumenwieseL10 {
+namespace BlumenwieseL11 {
 
     export class Bee extends Moveable { //damit blumenwiese09 darauf zureifen kann muss man die Datei exportieren
         color: string;

@@ -1,54 +1,60 @@
 "use strict";
-var BlumenwieseL10;
-(function (BlumenwieseL10) {
-    class SmallFlower extends BlumenwieseL10.Flower {
+var BlumenwieseL11;
+(function (BlumenwieseL11) {
+    class SmallFlower extends BlumenwieseL11.Flower {
         constructor(_size, _position) {
             super(_position);
             let x = 1000 * Math.random();
-            let y = 300 * Math.random() + 920 * BlumenwieseL10.golden;
+            let y = 300 * Math.random() + 920 * BlumenwieseL11.golden;
             this.color = this.getRandomColor();
             this.yellowcolor = this.getRandomYellowColor();
-            this.colorNectar = "RGB(255,127,80)";
+            this.colorNectar = "white";
             if (_position)
                 this.position = _position;
             else
-                this.position = new BlumenwieseL10.Vector(x, y);
+                this.position = new BlumenwieseL11.Vector(x, y);
             if (_size)
                 this.size = _size;
             else
                 this.size = 10;
         }
         draw() {
-            BlumenwieseL10.crc2.beginPath();
-            BlumenwieseL10.crc2.rect(this.position.x, this.position.y, 5, 50);
-            BlumenwieseL10.crc2.fillStyle = "#487047";
-            BlumenwieseL10.crc2.fill();
-            BlumenwieseL10.crc2.closePath();
-            BlumenwieseL10.crc2.beginPath();
-            BlumenwieseL10.crc2.arc(this.position.x + 14, this.position.y + 32, 8, 0, 1 * Math.PI);
-            BlumenwieseL10.crc2.arc(this.position.x - 7, this.position.y + 22, 10, 0, 1 * Math.PI);
-            BlumenwieseL10.crc2.fillStyle = "#487047";
-            BlumenwieseL10.crc2.fill();
-            BlumenwieseL10.crc2.closePath();
+            BlumenwieseL11.crc2.beginPath();
+            BlumenwieseL11.crc2.rect(this.position.x, this.position.y, 5, 50);
+            BlumenwieseL11.crc2.fillStyle = "#487047";
+            BlumenwieseL11.crc2.fill();
+            BlumenwieseL11.crc2.closePath();
+            BlumenwieseL11.crc2.beginPath();
+            BlumenwieseL11.crc2.arc(this.position.x + 14, this.position.y + 32, 8, 0, 1 * Math.PI);
+            BlumenwieseL11.crc2.arc(this.position.x - 7, this.position.y + 22, 10, 0, 1 * Math.PI);
+            BlumenwieseL11.crc2.fillStyle = "#487047";
+            BlumenwieseL11.crc2.fill();
+            BlumenwieseL11.crc2.closePath();
             //colorful flowers
-            BlumenwieseL10.crc2.beginPath();
-            BlumenwieseL10.crc2.arc(this.position.x + 10, this.position.y, this.size, 0, 2 * Math.PI);
-            BlumenwieseL10.crc2.arc(this.position.x, this.position.y + 10, this.size, 0, 2 * Math.PI);
-            BlumenwieseL10.crc2.arc(this.position.x - 10, this.position.y, this.size, 0, 2 * Math.PI);
-            BlumenwieseL10.crc2.arc(this.position.x, this.position.y - 10, this.size, 0, 2 * Math.PI);
-            BlumenwieseL10.crc2.fillStyle = this.color;
-            BlumenwieseL10.crc2.fill();
-            BlumenwieseL10.crc2.closePath();
-            BlumenwieseL10.crc2.beginPath();
-            BlumenwieseL10.crc2.arc(this.position.x, this.position.y, 8, 0, 2 * Math.PI);
-            BlumenwieseL10.crc2.fillStyle = this.yellowcolor;
-            BlumenwieseL10.crc2.fill();
-            BlumenwieseL10.crc2.closePath();
+            BlumenwieseL11.crc2.beginPath();
+            BlumenwieseL11.crc2.arc(this.position.x + 10, this.position.y, this.size, 0, 2 * Math.PI);
+            BlumenwieseL11.crc2.arc(this.position.x, this.position.y + 10, this.size, 0, 2 * Math.PI);
+            BlumenwieseL11.crc2.arc(this.position.x - 10, this.position.y, this.size, 0, 2 * Math.PI);
+            BlumenwieseL11.crc2.arc(this.position.x, this.position.y - 10, this.size, 0, 2 * Math.PI);
+            BlumenwieseL11.crc2.fillStyle = this.color;
+            BlumenwieseL11.crc2.fill();
+            BlumenwieseL11.crc2.closePath();
+            BlumenwieseL11.crc2.beginPath();
+            BlumenwieseL11.crc2.arc(this.position.x, this.position.y, 8, 0, 2 * Math.PI);
+            BlumenwieseL11.crc2.fillStyle = this.yellowcolor;
+            BlumenwieseL11.crc2.fill();
+            BlumenwieseL11.crc2.closePath();
             //Nektar
-            BlumenwieseL10.crc2.beginPath();
-            BlumenwieseL10.crc2.fillStyle = this.colorNectar;
-            BlumenwieseL10.crc2.fillRect(this.position.x + 20, this.position.y + 20, 8, 0 - this.nectarLiter);
-            BlumenwieseL10.crc2.closePath();
+            /* crc2.beginPath();
+            crc2.fillStyle = this.colorNectar;
+            crc2.fillRect(this.position.x + 20, this.position.y + 20, 8, 0 - this.nectarLiter);
+            crc2.closePath(); */
+            //Nektar
+            BlumenwieseL11.crc2.beginPath();
+            BlumenwieseL11.crc2.fillStyle = this.colorNectar;
+            BlumenwieseL11.crc2.fillText("Nectar flower: " + Math.floor(this.nectarLiter) + " liter", 20, 280, 200);
+            BlumenwieseL11.crc2.fillRect(230, 280, 8, 0 - this.nectarLiter);
+            BlumenwieseL11.crc2.closePath();
         }
         getRandomColor() {
             let color = ["#f9d5e5", "#eeac99", "#e06377", "#c83349", "#d6d4e0", "#600307", "#b90b21", "#d71536", "#e5174d", "#FFFFE0"];
@@ -61,6 +67,6 @@ var BlumenwieseL10;
             return randomYellowColor;
         }
     }
-    BlumenwieseL10.SmallFlower = SmallFlower;
-})(BlumenwieseL10 || (BlumenwieseL10 = {}));
+    BlumenwieseL11.SmallFlower = SmallFlower;
+})(BlumenwieseL11 || (BlumenwieseL11 = {}));
 //# sourceMappingURL=flower.js.map

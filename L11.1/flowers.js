@@ -1,13 +1,14 @@
 "use strict";
-var BlumenwieseL10;
-(function (BlumenwieseL10) {
+var BlumenwieseL11;
+(function (BlumenwieseL11) {
     class Flower {
         constructor(_position) {
             let x = 1000 * Math.random();
-            let y = 300 * Math.random() + 920 * BlumenwieseL10.golden;
-            this.position = new BlumenwieseL10.Vector(x, y);
+            let y = 300 * Math.random() + 920 * BlumenwieseL11.golden;
+            this.position = new BlumenwieseL11.Vector(x, y);
             this.size = 10;
             this.nectarLiter = 0;
+            this.nectarLiterSunflower = 0.9 * 2;
         }
         draw() {
             //draw
@@ -15,10 +16,13 @@ var BlumenwieseL10;
         fillNectar() {
             console.log("fill Nectar");
             if (this.nectarLiter < 30) {
-                this.nectarLiter += 0.1;
+                this.nectarLiter += 0.03;
+                if (this.nectarLiterSunflower < 50) {
+                    this.nectarLiterSunflower += 0.05;
+                }
             }
         }
     }
-    BlumenwieseL10.Flower = Flower;
-})(BlumenwieseL10 || (BlumenwieseL10 = {}));
+    BlumenwieseL11.Flower = Flower;
+})(BlumenwieseL11 || (BlumenwieseL11 = {}));
 //# sourceMappingURL=flowers.js.map

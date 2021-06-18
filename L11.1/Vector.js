@@ -1,6 +1,6 @@
 "use strict";
-var BlumenwieseL10;
-(function (BlumenwieseL10) {
+var BlumenwieseL11;
+(function (BlumenwieseL11) {
     class Vector {
         constructor(_x, _y) {
             this.set(_x, _y);
@@ -18,6 +18,6 @@ var BlumenwieseL10;
             this.y += _addend.y;
         }
     }
-    BlumenwieseL10.Vector = Vector;
-})(BlumenwieseL10 || (BlumenwieseL10 = {}));
+    BlumenwieseL11.Vector = Vector;
+})(BlumenwieseL11 || (BlumenwieseL11 = {}));
 //# sourceMappingURL=Vector.js.map

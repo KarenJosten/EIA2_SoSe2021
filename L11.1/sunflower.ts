@@ -1,4 +1,4 @@
-namespace BlumenwieseL10 {
+namespace BlumenwieseL11 {
     export class SunFlower extends Flower { //damit blumenwiese09 darauf zureifen kann muss man die Datei exportieren
         color: string;
         colorNectar: string;
@@ -13,7 +13,8 @@ namespace BlumenwieseL10 {
 
             this.size = 5;
             this.color = "yellow";
-            this.colorNectar = "RGB(255,127,80)";
+            //this.colorNectar = "RGB(255,127,80)";
+            this.colorNectar = "white";
 
     }
 
@@ -72,9 +73,11 @@ namespace BlumenwieseL10 {
 
         //Nektar
         crc2.beginPath();
+        crc2.font = "18px Arial";
         crc2.fillStyle = this.colorNectar;
-        crc2.fillRect(this.position.x + 20, this.position.y + 20, 8, 0 - this.nectarLiter);
-        //crc2.fill();
+        crc2.fillText("Nectar sunflower: " + Math.floor(this.nectarLiterSunflower) + " liter", 20, 350, 200);
+        //crc2.fillRect(this.position.x + 20, this.position.y + 20, 8, 0 - this.nectarLiter);
+        crc2.fillRect(230, 350, 8, 0 - this.nectarLiterSunflower);
         crc2.closePath();
         } 
     }
