@@ -55,6 +55,16 @@ var BlumenwieseL11;
             BlumenwieseL11.crc2.fillText("Nectar flower: " + Math.floor(this.nectarLiter) + " liter", 20, 280, 200);
             BlumenwieseL11.crc2.fillRect(230, 280, 8, 0 - this.nectarLiter);
             BlumenwieseL11.crc2.closePath();
+            BlumenwieseL11.crc2.beginPath();
+            BlumenwieseL11.crc2.strokeStyle = "white";
+            BlumenwieseL11.crc2.lineWidth = 0.5;
+            BlumenwieseL11.crc2.moveTo(230, 280);
+            BlumenwieseL11.crc2.lineTo(238, 280);
+            BlumenwieseL11.crc2.lineTo(238, 249);
+            BlumenwieseL11.crc2.lineTo(230, 249);
+            BlumenwieseL11.crc2.lineTo(230, 280);
+            BlumenwieseL11.crc2.stroke();
+            BlumenwieseL11.crc2.closePath();
         }
         getRandomColor() {
             let color = ["#f9d5e5", "#eeac99", "#e06377", "#c83349", "#d6d4e0", "#600307", "#b90b21", "#d71536", "#e5174d", "#FFFFE0"];

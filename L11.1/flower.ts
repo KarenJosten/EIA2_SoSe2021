@@ -73,6 +73,17 @@ namespace BlumenwieseL11 {
                 crc2.fillText("Nectar flower: " + Math.floor(this.nectarLiter) + " liter", 20, 280, 200);
                 crc2.fillRect(230, 280, 8, 0 - this.nectarLiter);
                 crc2.closePath();
+
+                crc2.beginPath();
+                crc2.strokeStyle = "white";
+                crc2.lineWidth = 0.5;
+                crc2.moveTo(230, 280);
+                crc2.lineTo(238, 280);
+                crc2.lineTo(238, 249);
+                crc2.lineTo(230, 249);
+                crc2.lineTo(230, 280);
+                crc2.stroke();
+                crc2.closePath();
     }
 
         private getRandomColor(): string {
