@@ -58,7 +58,7 @@ var BlumenwieseL11;
             BlumenwieseL11.crc2.beginPath();
             BlumenwieseL11.crc2.font = "18px Arial";
             BlumenwieseL11.crc2.fillStyle = this.colorNectar;
-            BlumenwieseL11.crc2.fillText("Nectar sunflower: " + Math.floor(this.nectarLiterSunflower) + " liter", 20, 350, 200);
+            BlumenwieseL11.crc2.fillText("Nectar sunflower: ", 60, 350, 200);
             //crc2.fillRect(this.position.x + 20, this.position.y + 20, 8, 0 - this.nectarLiter);
             BlumenwieseL11.crc2.fillRect(230, 350, 8, 0 - this.nectarLiterSunflower);
             BlumenwieseL11.crc2.closePath();

@@ -70,7 +70,7 @@ namespace BlumenwieseL11 {
                  //Nektar
                 crc2.beginPath();
                 crc2.fillStyle = this.colorNectar;
-                crc2.fillText("Nectar flower: " + Math.floor(this.nectarLiter) + " liter", 20, 280, 200);
+                crc2.fillText("Nectar flower: ", 60, 280, 200);
                 crc2.fillRect(230, 280, 8, 0 - this.nectarLiter);
                 crc2.closePath();
 

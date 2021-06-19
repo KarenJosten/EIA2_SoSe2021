@@ -52,7 +52,7 @@ var BlumenwieseL11;
             //Nektar
             BlumenwieseL11.crc2.beginPath();
             BlumenwieseL11.crc2.fillStyle = this.colorNectar;
-            BlumenwieseL11.crc2.fillText("Nectar flower: " + Math.floor(this.nectarLiter) + " liter", 20, 280, 200);
+            BlumenwieseL11.crc2.fillText("Nectar flower: ", 60, 280, 200);
             BlumenwieseL11.crc2.fillRect(230, 280, 8, 0 - this.nectarLiter);
             BlumenwieseL11.crc2.closePath();
             BlumenwieseL11.crc2.beginPath();
