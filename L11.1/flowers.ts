@@ -25,11 +25,10 @@ namespace BlumenwieseL11 {
         console.log("fill Nectar");
         if (this.nectarLiter < 30) {
             this.nectarLiter += 0.02;
-    
-            if (this.nectarLiterSunflower < 50) {
+        }
+        /* if (this.nectarLiterSunflower < 50) {
             this.nectarLiterSunflower += 0.05;
-        }
-        }
+        } */
     }
     }
 }

@@ -45,26 +45,26 @@ var BlumenwieseL11;
             BlumenwieseL11.crc2.fill();
             BlumenwieseL11.crc2.closePath();
             //Nektar
-            /* crc2.beginPath();
-            crc2.fillStyle = this.colorNectar;
-            crc2.fillRect(this.position.x + 20, this.position.y + 20, 8, 0 - this.nectarLiter);
-            crc2.closePath(); */
-            //Nektar
             BlumenwieseL11.crc2.beginPath();
             BlumenwieseL11.crc2.fillStyle = this.colorNectar;
-            BlumenwieseL11.crc2.fillText("Nectar flower: ", 60, 280, 200);
-            BlumenwieseL11.crc2.fillRect(230, 280, 8, 0 - this.nectarLiter);
+            BlumenwieseL11.crc2.fillRect(this.position.x + 20, this.position.y + 20, 8, 0 - this.nectarLiter);
             BlumenwieseL11.crc2.closePath();
-            BlumenwieseL11.crc2.beginPath();
-            BlumenwieseL11.crc2.strokeStyle = "white";
-            BlumenwieseL11.crc2.lineWidth = 0.5;
-            BlumenwieseL11.crc2.moveTo(230, 280);
-            BlumenwieseL11.crc2.lineTo(238, 280);
-            BlumenwieseL11.crc2.lineTo(238, 249);
-            BlumenwieseL11.crc2.lineTo(230, 249);
-            BlumenwieseL11.crc2.lineTo(230, 280);
-            BlumenwieseL11.crc2.stroke();
-            BlumenwieseL11.crc2.closePath();
+            //Nektar
+            /*    crc2.beginPath();
+               crc2.fillStyle = this.colorNectar;
+               crc2.fillText("Nectar flower: ", 60, 280, 200);
+               crc2.fillRect(230, 280, 8, 0 - this.nectarLiter);
+               crc2.closePath(); */
+            /*   crc2.beginPath();
+              crc2.strokeStyle = "white";
+              crc2.lineWidth = 0.5;
+              crc2.moveTo(230, 280);
+              crc2.lineTo(238, 280);
+              crc2.lineTo(238, 249);
+              crc2.lineTo(230, 249);
+              crc2.lineTo(230, 280);
+              crc2.stroke();
+              crc2.closePath(); */
         }
         getRandomColor() {
             let color = ["#f9d5e5", "#eeac99", "#e06377", "#c83349", "#d6d4e0", "#600307", "#b90b21", "#d71536", "#e5174d", "#FFFFE0"];
