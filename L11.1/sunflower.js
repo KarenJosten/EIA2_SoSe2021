@@ -56,22 +56,27 @@ var BlumenwieseL11;
             BlumenwieseL11.crc2.closePath();
             //Nektar
             BlumenwieseL11.crc2.beginPath();
-            BlumenwieseL11.crc2.font = "18px Arial";
             BlumenwieseL11.crc2.fillStyle = this.colorNectar;
-            BlumenwieseL11.crc2.fillText("Nectar sunflower: ", 60, 350, 200);
+            BlumenwieseL11.crc2.fillRect(this.position.x + 20, this.position.y + 20, 8, 0 - this.nectarLiter);
+            BlumenwieseL11.crc2.closePath();
+            /* crc2.beginPath();
+            crc2.font = "18px Arial";
+            crc2.fillStyle = this.colorNectar;
+            crc2.fillText("Nectar sunflower: ", 60, 350, 200);
             //crc2.fillRect(this.position.x + 20, this.position.y + 20, 8, 0 - this.nectarLiter);
-            BlumenwieseL11.crc2.fillRect(230, 350, 8, 0 - this.nectarLiterSunflower);
-            BlumenwieseL11.crc2.closePath();
-            BlumenwieseL11.crc2.beginPath();
-            BlumenwieseL11.crc2.strokeStyle = "white";
-            BlumenwieseL11.crc2.lineWidth = 0.5;
-            BlumenwieseL11.crc2.moveTo(230, 350);
-            BlumenwieseL11.crc2.lineTo(238, 350);
-            BlumenwieseL11.crc2.lineTo(238, 299);
-            BlumenwieseL11.crc2.lineTo(230, 299);
-            BlumenwieseL11.crc2.lineTo(230, 350);
-            BlumenwieseL11.crc2.stroke();
-            BlumenwieseL11.crc2.closePath();
+            crc2.fillRect(230, 350, 8, 0 - this.nectarLiterSunflower);
+            crc2.closePath();
+    
+            crc2.beginPath();
+            crc2.strokeStyle = "white";
+            crc2.lineWidth = 0.5;
+            crc2.moveTo(230, 350);
+            crc2.lineTo(238, 350);
+            crc2.lineTo(238, 299);
+            crc2.lineTo(230, 299);
+            crc2.lineTo(230, 350);
+            crc2.stroke();
+            crc2.closePath(); */
         }
     }
     BlumenwieseL11.SunFlower = SunFlower;

@@ -73,6 +73,11 @@ namespace BlumenwieseL11 {
 
         //Nektar
         crc2.beginPath();
+        crc2.fillStyle = this.colorNectar;
+        crc2.fillRect(this.position.x + 20, this.position.y + 20, 8, 0 - this.nectarLiter);
+        crc2.closePath();
+        
+        /* crc2.beginPath();
         crc2.font = "18px Arial";
         crc2.fillStyle = this.colorNectar;
         crc2.fillText("Nectar sunflower: ", 60, 350, 200);
@@ -89,7 +94,7 @@ namespace BlumenwieseL11 {
         crc2.lineTo(230, 299);
         crc2.lineTo(230, 350);
         crc2.stroke();
-        crc2.closePath();
+        crc2.closePath(); */
         } 
     }
 }

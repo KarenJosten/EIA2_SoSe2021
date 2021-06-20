@@ -17,10 +17,10 @@ var BlumenwieseL11;
             console.log("fill Nectar");
             if (this.nectarLiter < 30) {
                 this.nectarLiter += 0.02;
-                if (this.nectarLiterSunflower < 50) {
-                    this.nectarLiterSunflower += 0.05;
-                }
             }
+            /* if (this.nectarLiterSunflower < 50) {
+                this.nectarLiterSunflower += 0.05;
+            } */
         }
     }
     BlumenwieseL11.Flower = Flower;
