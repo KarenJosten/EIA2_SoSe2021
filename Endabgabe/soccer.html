@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>minififa</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+    <script src="moveable.js" type="text/javascript" charset="utf-8"></script>
+    <script src="soccer.js" type="text/javascript" charset="utf-8"></script>
+    <script src="player.js" type="text/javascript" charset="utf-8"></script>
+    <script src="referee.js" type="text/javascript" charset="utf-8"></script>
+    <script src="linesman.js" type="text/javascript" charset="utf-8"></script>
+    <script src="Vector.js" type="text/javascript" charset="utf-8"></script>
+   
+    <title>MiniFifa</title>
+</head>
+    <body>
+        <h1>Mini Fifa 2021</h1>
+        <div class="formelements">
+        <form>
+            Choose color jersey <br>for first team:
+            <div class="jersey">
+		        <input class="jerseyColor" type="color" name="yerseyColor" value="#f00012">
+		    <hr />
+            </div>
+            Choose color jersey <br>for second team:
+            <div class="jersey">
+		        <input class="jerseyColor" type="color" name="yerseyColor" value="#302352">
+		    <hr />
+            </div>
+            Choose max velocity:
+            <div>
+		        <input class="slider" type="range" name="Slider" min="50" max="200" step="10" value="50" />
+		    <hr />
+            </div>
+            Choose min velocity:
+            <div>
+		        <input class="slider" type="range" name="Slider" min="50" max="200" step="10" value="50" />
+		    <hr />
+            </div>
+            Choose max precision:
+            <div>
+		        <input class="slider" type="range" name="Slider" min="50" max="200" step="10" value="50" />
+		    <hr />
+            </div>
+            Choose min precision:
+            <div>
+		        <input class="slider" type="range" name="Slider" min="50" max="200" step="10" value="50" />
+		    <hr />
+            </div>
+            <button class="start">Start</button>
+        </form>
+    </div>
+            <canvas width="900" height="600" id="canvas"></canvas>
+            <footer> 
+                Karen Josten | 265754 | MKB4 | Hochschule Furtwangen | Entwicklung Interaktiver Anwendungen 2
+            </footer>
+    </body>
+</html>
