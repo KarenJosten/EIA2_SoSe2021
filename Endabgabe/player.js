@@ -4,15 +4,6 @@ var Soccer;
     class Player extends Soccer.Moveable {
         constructor(_position, _velocity, _colorTeamOne, _colorTeamtwo, _precision, _playerNumber, _team) {
             super(_position);
-            let x = 900 * Math.random();
-            let y = 400 * Math.random();
-            this.position = new Soccer.Vector(x, y);
-            this.colorTeamOne = "red";
-            this.colorTeamTwo = "blue";
-            if (_position)
-                this.position = _position;
-            else
-                this.position = new Soccer.Vector(x, y);
         }
         draw() {
             Soccer.crc2.beginPath();
@@ -20,6 +11,22 @@ var Soccer;
             Soccer.crc2.fillStyle = this.colorTeamOne;
             Soccer.crc2.fill();
             Soccer.crc2.closePath();
+            Soccer.crc2.beginPath();
+            Soccer.crc2.arc(this.position.x, this.position.y, 10, 0, 2 * Math.PI);
+            Soccer.crc2.fillStyle = this.colorTeamTwo;
+            Soccer.crc2.fill();
+            Soccer.crc2.closePath();
+        }
+        shoot() {
+            console.log("shoot ball");
+            let event = new CustomEvent(Soccer.PLAYER_EVENT.BALL_SHOOTS, { detail: { player: this } });
+            Soccer.crc2.canvas.dispatchEvent(event);
+        }
+        change() {
+            console.log("change player");
+            super.change();
+            let event = new CustomEvent(Soccer.PLAYER_EVENT.CHANGE_PLAYER, { detail: { player: this } });
+            Soccer.crc2.canvas.dispatchEvent(event);
         }
     }
     Soccer.Player = Player;

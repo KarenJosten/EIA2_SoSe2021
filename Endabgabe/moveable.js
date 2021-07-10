@@ -3,16 +3,20 @@ var Soccer;
 (function (Soccer) {
     class Moveable {
         constructor(_position) {
+            this.expendable = false;
+            this.hitRadius = 0;
+            let a = Math.random();
+            let b = Math.random();
+            this.velocity = new Soccer.Vector(a, b);
             let x = 900 * Math.random();
             let y = 600 * Math.random();
-            let a = -Math.random();
-            let b = Math.random();
             this.position = new Soccer.Vector(x, y);
-            this.velocity = new Soccer.Vector(a, b);
+        }
+        change() {
+            this.expendable = true;
         }
         move(_timeslice) {
             this.position.add(this.velocity);
-            //mit Kollision
             if (this.position.x + 10 > 900 || this.position.x - 10 < 0) {
                 this.velocity.x = -this.velocity.x;
             }

@@ -6,18 +6,17 @@ namespace Soccer {
 
         constructor(_position?: Vector) {
             super(_position);
-            let x: number = 900 * Math.random();
+            this.color = "#ff748c";
+           /*  let x: number = 900 * Math.random();
             let y: number = 400 * Math.random();
             let a: number = Math.random();
             let b: number = Math.random();
             this.position = new Vector(x, y);
-            this.color = "#ff748c";
-
             if (_position) 
             this.position = _position;
             else
             this.position = new Vector(x, y);
-            this.velocity = new Vector(a, b);
+            this.velocity = new Vector(a, b); */
     }
     public move(_timeslice: number): void {
         this.position.add(this.velocity);

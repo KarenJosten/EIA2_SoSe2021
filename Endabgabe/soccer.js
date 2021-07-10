@@ -2,6 +2,11 @@
 /*Code mit Hilfe von Julia Käppeler und Rebecca Räschke erstellt*/
 var Soccer;
 (function (Soccer) {
+    let PLAYER_EVENT;
+    (function (PLAYER_EVENT) {
+        PLAYER_EVENT["BALL_SHOOTS"] = "ballShoots";
+        PLAYER_EVENT["CHANGE_PLAYER"] = "changePlayer";
+    })(PLAYER_EVENT = Soccer.PLAYER_EVENT || (Soccer.PLAYER_EVENT = {}));
     window.addEventListener("load", handleLoad);
     let moveables = [];
     function handleLoad(_event) {
@@ -12,10 +17,25 @@ var Soccer;
         drawLines();
         let soccerfield = Soccer.crc2.getImageData(0, 0, 1000, 900);
         createReferee(1);
-        createLinesman(2);
+        createLinesman(1);
         createBall(1);
         createPlayer(22);
+        canvas.addEventListener(PLAYER_EVENT.CHANGE_PLAYER, changePlayer);
         window.setInterval(update, 20, soccerfield); //alle 20 ms updaten
+    }
+    /*  function shootBall(_origin: Vector): void {
+         let velocity: Vector = new Vector(200, 299);
+         let ball: Ball = new Ball(_origin);
+         ball.move(1);
+         moveables.push(ball);
+     }
+ 
+     function handlePlayerShot(_event: Event): void {
+         let player: Player = (<CustomEvent>_event).detail.player;
+         shootBall(player.position);
+     } */
+    function changePlayer() {
+        //
     }
     function createReferee(_nReferee) {
         for (let i = 0; i < _nReferee; i++) {
@@ -25,8 +45,14 @@ var Soccer;
     }
     function createLinesman(_nLinesman) {
         for (let i = 0; i < _nLinesman; i++) {
-            let linesman = new Soccer.Linesman();
-            moveables.push(linesman);
+            let firstLinesman = new Soccer.Linesman();
+            firstLinesman.position.x = 900 * Math.random(); // setzt position.x von Linesman
+            firstLinesman.position.y = 10;
+            firstLinesman.velocity.x = Math.random();
+            firstLinesman.velocity.y = 0;
+            moveables.push(firstLinesman); //Werte des ersten Linienrichters in das Array pushen
+            let secondLinesman = new Soccer.Linesman();
+            moveables.push(secondLinesman);
         }
     }
     function createBall(_nBall) {
@@ -37,8 +63,16 @@ var Soccer;
     }
     function createPlayer(_nPlayer) {
         for (let i = 0; i < _nPlayer; i++) {
-            let player = new Soccer.Player();
-            moveables.push(player);
+            if (i <= 10) {
+                let firstTeam = new Soccer.Player();
+                firstTeam.colorTeamOne = "blue";
+                moveables.push(firstTeam);
+            }
+            else {
+                let secondTeam = new Soccer.Player();
+                secondTeam.colorTeamTwo = "red";
+                moveables.push(secondTeam);
+            }
         }
     }
     function drawSoccerfield() {
@@ -170,14 +204,33 @@ var Soccer;
             moveable.draw();
             moveable.move(1);
         }
+        //deleteExpandables();
+        //handleCollisions();
     }
+    /*   function deleteExpandables(): void {
+          for (let i: number = moveables.length - 1; i >= 0; i--) {
+              if (moveables[i].expendable)
+                  moveables.splice(i, 1);
+          }
+      } */
+    /*  function handleCollisions(): void {
+         for (let i: number = 0; i < moveables.length; i++) {
+             let a: Moveable = moveables[i];
+             for (let j: number = i + 1; j < moveables.length; j++) {
+                 let b: Moveable = moveables[j];
+ 
+                 if (a instanceof Player && b instanceof Player)
+                     continue;
+                 if (a.expendable || b.expendable)
+                     continue;
+ 
+                 if (a.isHitBy(b)) {
+                     a.change();
+                     b.change();
+                 }
+     }
+ }
+     
+ } */
 })(Soccer || (Soccer = {}));
-/* if (i == 0) { */
-//let linesman: Linesman = new Linesman({x: 800,y:  0}); //geht noch nicht
-/*  let linesman: Linesman = new Linesman();
- moveables.push(linesman); */
-/* if (i == 1) {
-let linesman: Linesman = new Linesman({x: 800,y:  580});
-moveables.push(linesman);
-} */ 
 //# sourceMappingURL=soccer.js.map

@@ -2,15 +2,14 @@
 var Soccer;
 (function (Soccer) {
     class Linesman extends Soccer.Moveable {
-        constructor(_size, _position) {
+        constructor(_position) {
             super(_position);
             let x = 900 * Math.random();
             let y = 590;
             let a = -0.5;
             let b = 0;
-            //this.position = _position;
             this.position = new Soccer.Vector(x, y);
-            this.size = 10;
+            //this.position = _position;
             this.color = "yellow";
             if (_position)
                 this.position = _position;
@@ -21,13 +20,13 @@ var Soccer;
         move(_timeslice) {
             this.position.add(this.velocity);
             //mit Kollision
-            if (this.position.x + this.size > 900 || this.position.x - this.size < 0) {
+            if (this.position.x + 10 > 900 || this.position.x - 10 < 0) {
                 this.velocity.x = -this.velocity.x;
             }
         }
         draw() {
             Soccer.crc2.beginPath();
-            Soccer.crc2.arc(this.position.x, this.position.y, this.size, 0, 2 * Math.PI);
+            Soccer.crc2.arc(this.position.x, this.position.y, 10, 0, 2 * Math.PI);
             Soccer.crc2.fillStyle = this.color;
             Soccer.crc2.fill();
             Soccer.crc2.closePath();
