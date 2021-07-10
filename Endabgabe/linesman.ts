@@ -11,6 +11,7 @@ namespace Soccer {
             let y: number = 590;
             let a: number = - 0.5;
             let b: number = 0;
+            //this.position = _position;
             this.position = new Vector(x, y);
             this.size = 10;
             this.color = "yellow";

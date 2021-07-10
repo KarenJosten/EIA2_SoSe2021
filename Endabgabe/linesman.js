@@ -8,6 +8,7 @@ var Soccer;
             let y = 590;
             let a = -0.5;
             let b = 0;
+            //this.position = _position;
             this.position = new Soccer.Vector(x, y);
             this.size = 10;
             this.color = "yellow";

@@ -11,6 +11,7 @@
     <script src="player.js" type="text/javascript" charset="utf-8"></script>
     <script src="referee.js" type="text/javascript" charset="utf-8"></script>
     <script src="linesman.js" type="text/javascript" charset="utf-8"></script>
+    <script src="Ball.js" type="text/javascript" charset="utf-8"></script>
     <script src="Vector.js" type="text/javascript" charset="utf-8"></script>
    
     <title>MiniFifa</title>
@@ -19,39 +20,52 @@
         <h1>Mini Fifa 2021</h1>
         <div class="formelements">
         <form>
-            Choose color jersey <br>for first team:
-            <div class="jersey">
-		        <input class="jerseyColor" type="color" name="yerseyColor" value="#f00012">
-		    <hr />
+        <fieldset>
+        <legend>Create your own Mini Fifa!</legend>
+           
+            Choose color for <br>first team:            
+            <div>
+		        <input class="jerseyColor" type="color" name="yerseyColor" value="#ff0000">
+		    <hr/>
             </div>
-            Choose color jersey <br>for second team:
-            <div class="jersey">
-		        <input class="jerseyColor" type="color" name="yerseyColor" value="#302352">
-		    <hr />
+            Choose color for <br>second team:
+            <div>
+		        <input class="jerseyColor" type="color" name="yerseyColor" value="#0000ff">
+		    <hr/>
             </div>
             Choose max velocity:
             <div>
-		        <input class="slider" type="range" name="Slider" min="50" max="200" step="10" value="50" />
-		    <hr />
+            <span>
+		       31 <input class="slider" type="range" name="maxVelocity" min="31" max="60" step="1" value="31" /> 60
+		    </span>
+            <hr/>
             </div>
             Choose min velocity:
             <div>
-		        <input class="slider" type="range" name="Slider" min="50" max="200" step="10" value="50" />
-		    <hr />
+            <span>
+		       1 <input class="slider" type="range" name="minVelocity" min="1" max="30" step="1" value="1" /> 30
+		    </span>
+            <hr/>
             </div>
             Choose max precision:
             <div>
-		        <input class="slider" type="range" name="Slider" min="50" max="200" step="10" value="50" />
-		    <hr />
+            <span>
+		       21 <input class="slider" type="range" name="Slider" min="21" max="40" step="1" value="21" /> 40
+               </span>
+		    <hr/>
             </div>
             Choose min precision:
             <div>
-		        <input class="slider" type="range" name="Slider" min="50" max="200" step="10" value="50" />
-		    <hr />
+            <span>
+		       1 <input class="slider" type="range" name="Slider" min="1" max="20" step="1" value="1" /> 20
+		    </span>
+            <hr/>
             </div>
-            <button class="start">Start</button>
+            <button class="start">START</button>
+            </fieldset>
         </form>
     </div>
+    <p id="score">0 : 0</p>
             <canvas width="900" height="600" id="canvas"></canvas>
             <footer> 
                 Karen Josten | 265754 | MKB4 | Hochschule Furtwangen | Entwicklung Interaktiver Anwendungen 2

@@ -5,11 +5,20 @@ var Soccer;
         constructor(_position) {
             let x = 900 * Math.random();
             let y = 600 * Math.random();
+            let a = -Math.random();
+            let b = Math.random();
             this.position = new Soccer.Vector(x, y);
-            this.size = 10;
+            this.velocity = new Soccer.Vector(a, b);
         }
         move(_timeslice) {
-            //
+            this.position.add(this.velocity);
+            //mit Kollision
+            if (this.position.x + 10 > 900 || this.position.x - 10 < 0) {
+                this.velocity.x = -this.velocity.x;
+            }
+            if (this.position.y + 10 > 600 || this.position.y - 10 < 0) {
+                this.velocity.y = -this.velocity.y;
+            }
         }
         draw() {
             //draw
