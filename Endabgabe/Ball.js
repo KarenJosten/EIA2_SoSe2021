@@ -4,10 +4,10 @@ var Soccer;
     class Ball extends Soccer.Moveable {
         constructor(_position) {
             super(_position);
-            let x = 900 * Math.random();
-            let y = 600 * Math.random();
+            let x = 450;
+            let y = 300;
             let a = Math.random();
-            let b = Math.random(); //warum geht der ball nach unten links?
+            let b = Math.random(); //Ball geht nach unten, da Math.random positiv ist
             this.position = new Soccer.Vector(x, y);
             this.color = "white";
             if (_position)
@@ -18,7 +18,6 @@ var Soccer;
         }
         move(_timeslice) {
             this.position.add(this.velocity);
-            //mit Kollision
             if (this.position.x + 10 > 900 || this.position.x - 5 < 0) {
                 this.velocity.x = -this.velocity.x;
             }
@@ -31,8 +30,31 @@ var Soccer;
             Soccer.crc2.arc(this.position.x, this.position.y, 5, 0, 2 * Math.PI);
             Soccer.crc2.fillStyle = this.color;
             Soccer.crc2.fill();
-            Soccer.crc2.moveTo(this.position.x, this.position.y);
-            // crc2.lineTo(thi.posi)
+            Soccer.crc2.closePath();
+            Soccer.crc2.beginPath();
+            Soccer.crc2.arc(this.position.x + 3, this.position.y + 2, 1.4, 0, 2 * Math.PI);
+            Soccer.crc2.fillStyle = "black";
+            Soccer.crc2.fill();
+            Soccer.crc2.closePath();
+            Soccer.crc2.beginPath();
+            Soccer.crc2.arc(this.position.x - 3, this.position.y + 2, 1.4, 0, 2 * Math.PI);
+            Soccer.crc2.fillStyle = "black";
+            Soccer.crc2.fill();
+            Soccer.crc2.closePath();
+            Soccer.crc2.beginPath();
+            Soccer.crc2.arc(this.position.x - 3, this.position.y - 2, 1.4, 0, 2 * Math.PI);
+            Soccer.crc2.fillStyle = "black";
+            Soccer.crc2.fill();
+            Soccer.crc2.closePath();
+            Soccer.crc2.beginPath();
+            Soccer.crc2.arc(this.position.x, this.position.y, 2, 0, 2 * Math.PI);
+            Soccer.crc2.fillStyle = "black";
+            Soccer.crc2.fill();
+            Soccer.crc2.closePath();
+            Soccer.crc2.beginPath();
+            Soccer.crc2.arc(this.position.x + 3, this.position.y - 2, 1.4, 0, 2 * Math.PI);
+            Soccer.crc2.fillStyle = "black";
+            Soccer.crc2.fill();
             Soccer.crc2.closePath();
         }
     }

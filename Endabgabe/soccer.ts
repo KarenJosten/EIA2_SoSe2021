@@ -1,9 +1,16 @@
 /*Code mit Hilfe von Julia Käppeler und Rebecca Räschke erstellt*/
+
 namespace Soccer {
+    export enum PLAYER_EVENT {
+        BALL_SHOOTS = "ballShoots",
+        CHANGE_PLAYER = "changePlayer"
+    }
+
     window.addEventListener("load", handleLoad);
 
     export let crc2: CanvasRenderingContext2D;
     let moveables: Moveable[] = [];
+
 
     function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.querySelector("canvas")!;
@@ -16,12 +23,30 @@ namespace Soccer {
         let soccerfield: ImageData = crc2.getImageData(0, 0, 1000, 900);
 
         createReferee(1);
-        createLinesman(2);
+        createLinesman(1);
         createBall(1);
         createPlayer(22);
 
+        canvas.addEventListener(PLAYER_EVENT.CHANGE_PLAYER, changePlayer);
+
         window.setInterval(update, 20, soccerfield); //alle 20 ms updaten
 
+    }
+
+   /*  function shootBall(_origin: Vector): void {
+        let velocity: Vector = new Vector(200, 299);
+        let ball: Ball = new Ball(_origin);
+        ball.move(1);
+        moveables.push(ball);
+    }
+
+    function handlePlayerShot(_event: Event): void {
+        let player: Player = (<CustomEvent>_event).detail.player;
+        shootBall(player.position);
+    } */
+
+    function changePlayer(): void {
+        //
     }
 
     function createReferee(_nReferee: number): void {
@@ -32,9 +57,16 @@ namespace Soccer {
     }
 
     function createLinesman(_nLinesman: number): void {
-        for (let i:  number = 0; i < _nLinesman; i++) {
-            let linesman: Linesman = new Linesman();
-            moveables.push(linesman);
+        for (let i: number = 0; i < _nLinesman; i++) {
+            let firstLinesman: Linesman = new Linesman();
+            firstLinesman.position.x = 900 * Math.random(); // setzt position.x von Linesman
+            firstLinesman.position.y = 10;
+            firstLinesman.velocity.x = Math.random();
+            firstLinesman.velocity.y = 0;
+            moveables.push(firstLinesman); //Werte des ersten Linienrichters in das Array pushen
+
+            let secondLinesman: Linesman = new Linesman();
+            moveables.push(secondLinesman);
         }
     }
 
@@ -47,8 +79,19 @@ namespace Soccer {
 
     function createPlayer(_nPlayer: number): void {
         for (let i: number = 0; i < _nPlayer; i++) {
-            let player: Player = new Player();
-            moveables.push(player);
+
+            if (i <= 10) {
+            let firstTeam: Player = new Player();
+            firstTeam.colorTeamOne = "blue";
+            moveables.push(firstTeam);
+            }
+
+            else {
+            let secondTeam: Player = new Player();
+            secondTeam.colorTeamTwo = "red";
+            moveables.push(secondTeam);
+            }
+
         }
     }
 
@@ -202,14 +245,35 @@ namespace Soccer {
             moveable.draw();
             moveable.move(1);
         }
+
+        //deleteExpandables();
+        //handleCollisions();
+    }
+
+  /*   function deleteExpandables(): void {
+        for (let i: number = moveables.length - 1; i >= 0; i--) {
+            if (moveables[i].expendable)
+                moveables.splice(i, 1);
+        }
+    } */
+
+   /*  function handleCollisions(): void {
+        for (let i: number = 0; i < moveables.length; i++) {
+            let a: Moveable = moveables[i];
+            for (let j: number = i + 1; j < moveables.length; j++) {
+                let b: Moveable = moveables[j];
+
+                if (a instanceof Player && b instanceof Player)
+                    continue;
+                if (a.expendable || b.expendable)
+                    continue;
+
+                if (a.isHitBy(b)) {
+                    a.change();
+                    b.change();
+                }
     }
 }
-
-/* if (i == 0) { */
-                //let linesman: Linesman = new Linesman({x: 800,y:  0}); //geht noch nicht
-               /*  let linesman: Linesman = new Linesman();
-                moveables.push(linesman); */
-                /* if (i == 1) {
-                let linesman: Linesman = new Linesman({x: 800,y:  580});
-                moveables.push(linesman);
-            } */
+    
+} */
+}

@@ -4,17 +4,17 @@ var Soccer;
     class Referee extends Soccer.Moveable {
         constructor(_position) {
             super(_position);
-            let x = 900 * Math.random();
-            let y = 400 * Math.random();
-            let a = Math.random();
-            let b = Math.random();
-            this.position = new Soccer.Vector(x, y);
             this.color = "#ff748c";
-            if (_position)
-                this.position = _position;
-            else
-                this.position = new Soccer.Vector(x, y);
-            this.velocity = new Soccer.Vector(a, b);
+            /*  let x: number = 900 * Math.random();
+             let y: number = 400 * Math.random();
+             let a: number = Math.random();
+             let b: number = Math.random();
+             this.position = new Vector(x, y);
+             if (_position)
+             this.position = _position;
+             else
+             this.position = new Vector(x, y);
+             this.velocity = new Vector(a, b); */
         }
         move(_timeslice) {
             this.position.add(this.velocity);
