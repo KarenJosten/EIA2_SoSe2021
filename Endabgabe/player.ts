@@ -29,7 +29,7 @@ namespace Soccer {
             crc2.closePath();
         } 
 
-        public shoot(): void {
+       /*  public shoot(): void {
             console.log("shoot ball");
             let event: CustomEvent = new CustomEvent(PLAYER_EVENT.BALL_SHOOTS, {detail: {player: this}});
             crc2.canvas.dispatchEvent(event);
@@ -40,7 +40,7 @@ namespace Soccer {
             super.change();
             let event: CustomEvent = new CustomEvent(PLAYER_EVENT.CHANGE_PLAYER, {detail: {player: this}});
             crc2.canvas.dispatchEvent(event);
-        }
+        } */
 
     }
 }

@@ -10,7 +10,10 @@ namespace Soccer {
 
     export let crc2: CanvasRenderingContext2D;
     let moveables: Moveable[] = [];
+    let player: string[] = [];
 
+    let form: HTMLElement;
+    let start: HTMLElement;
 
     function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.querySelector("canvas")!;
@@ -25,29 +28,30 @@ namespace Soccer {
         createReferee(1);
         createLinesman(1);
         createBall(1);
-        createPlayer(22);
 
-        canvas.addEventListener(PLAYER_EVENT.CHANGE_PLAYER, changePlayer);
+        form = <HTMLElement>document.querySelector("form");
+        form.addEventListener("change", handleChange);
 
-        window.setInterval(update, 20, soccerfield); //alle 20 ms updaten
+        start = <HTMLElement>document.querySelector("#start");
+        start.addEventListener("click", createPlayer);
 
+        //canvas.addEventListener(PLAYER_EVENT.CHANGE_PLAYER, changePlayer);
+
+        window.setInterval(update, 15, soccerfield); //alle 15 ms updaten
     }
 
-   /*  function shootBall(_origin: Vector): void {
-        let velocity: Vector = new Vector(200, 299);
-        let ball: Ball = new Ball(_origin);
-        ball.move(1);
-        moveables.push(ball);
+    function handleChange(_event: Event): void {
+        _event.preventDefault();
+        let formData: FormData = new FormData(document.forms[0]);
+        player = [];
+        for (let entry of formData) {
+            player.push(String(entry[1]));
+        }            
     }
 
-    function handlePlayerShot(_event: Event): void {
-        let player: Player = (<CustomEvent>_event).detail.player;
-        shootBall(player.position);
-    } */
-
-    function changePlayer(): void {
+   /*  function changePlayer(): void {
         //
-    }
+    } */
 
     function createReferee(_nReferee: number): void {
         for (let i: number = 0; i < _nReferee; i++) {
@@ -77,23 +81,24 @@ namespace Soccer {
         }
     }
 
-    function createPlayer(_nPlayer: number): void {
-        for (let i: number = 0; i < _nPlayer; i++) {
+    function createPlayer(): void {
+        for (let i: number = 0; i < 22; i++) {
 
             if (i <= 10) {
             let firstTeam: Player = new Player();
-            firstTeam.colorTeamOne = "blue";
+            //firstTeam.colorTeamOne = "blue";
+            firstTeam.colorTeamOne = player[0];
             moveables.push(firstTeam);
             }
 
             else {
             let secondTeam: Player = new Player();
-            secondTeam.colorTeamTwo = "red";
+            //secondTeam.colorTeamTwo = "red";
+            secondTeam.colorTeamTwo = player[1];
             moveables.push(secondTeam);
             }
-
         }
-    }
+}
 
     function drawSoccerfield(): void {
         crc2.fillStyle = "#4c8527";
@@ -245,35 +250,5 @@ namespace Soccer {
             moveable.draw();
             moveable.move(1);
         }
-
-        //deleteExpandables();
-        //handleCollisions();
     }
-
-  /*   function deleteExpandables(): void {
-        for (let i: number = moveables.length - 1; i >= 0; i--) {
-            if (moveables[i].expendable)
-                moveables.splice(i, 1);
-        }
-    } */
-
-   /*  function handleCollisions(): void {
-        for (let i: number = 0; i < moveables.length; i++) {
-            let a: Moveable = moveables[i];
-            for (let j: number = i + 1; j < moveables.length; j++) {
-                let b: Moveable = moveables[j];
-
-                if (a instanceof Player && b instanceof Player)
-                    continue;
-                if (a.expendable || b.expendable)
-                    continue;
-
-                if (a.isHitBy(b)) {
-                    a.change();
-                    b.change();
-                }
-    }
-}
-    
-} */
 }
