@@ -8,12 +8,13 @@ namespace Soccer {
         protected hitRadius: number = 0;
         
         constructor(_position?: Vector) { //brauchen wir hier auch _velocity??
-            let a: number = Math.random();
+            let a: number = - Math.random();
             let b: number = Math.random();
             this.velocity = new Vector(a, b);
 
-            let x: number = 900 * Math.random();
-            let y: number = 600 * Math.random();
+            //feste position ohne Math.radnom, damit die nicht mehr am Rand kleben
+            let x: number = 450;
+            let y: number = 100;
             this.position = new Vector(x, y);
     } 
 

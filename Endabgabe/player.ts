@@ -3,7 +3,7 @@ namespace Soccer {
         public colorTeamTwo: string;
         public colorTeamOne: string; 
         public position: Vector;
-        protected velocity: Vector;
+        public velocity: Vector;
         protected precision: number;
         protected playerNumber: number;
         protected team: number;

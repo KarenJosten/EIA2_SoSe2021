@@ -5,11 +5,12 @@ var Soccer;
         constructor(_position) {
             this.expendable = false;
             this.hitRadius = 0;
-            let a = Math.random();
+            let a = -Math.random();
             let b = Math.random();
             this.velocity = new Soccer.Vector(a, b);
-            let x = 900 * Math.random();
-            let y = 600 * Math.random();
+            //feste position ohne Math.radnom, damit die nicht mehr am Rand kleben
+            let x = 450;
+            let y = 100;
             this.position = new Soccer.Vector(x, y);
         }
         /*   public change(): void {
