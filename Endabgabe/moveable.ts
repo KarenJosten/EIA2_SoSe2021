@@ -17,9 +17,9 @@ namespace Soccer {
             this.position = new Vector(x, y);
     } 
 
-    public change(): void {
+  /*   public change(): void {
         this.expendable = true;
-    }
+    } */
 
     public move(_timeslice: number): void {
         this.position.add(this.velocity);

@@ -12,9 +12,9 @@ var Soccer;
             let y = 600 * Math.random();
             this.position = new Soccer.Vector(x, y);
         }
-        change() {
-            this.expendable = true;
-        }
+        /*   public change(): void {
+              this.expendable = true;
+          } */
         move(_timeslice) {
             this.position.add(this.velocity);
             if (this.position.x + 10 > 900 || this.position.x - 10 < 0) {

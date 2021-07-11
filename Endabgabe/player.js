@@ -17,17 +17,6 @@ var Soccer;
             Soccer.crc2.fill();
             Soccer.crc2.closePath();
         }
-        shoot() {
-            console.log("shoot ball");
-            let event = new CustomEvent(Soccer.PLAYER_EVENT.BALL_SHOOTS, { detail: { player: this } });
-            Soccer.crc2.canvas.dispatchEvent(event);
-        }
-        change() {
-            console.log("change player");
-            super.change();
-            let event = new CustomEvent(Soccer.PLAYER_EVENT.CHANGE_PLAYER, { detail: { player: this } });
-            Soccer.crc2.canvas.dispatchEvent(event);
-        }
     }
     Soccer.Player = Player;
 })(Soccer || (Soccer = {}));
