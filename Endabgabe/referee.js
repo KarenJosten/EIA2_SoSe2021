@@ -29,6 +29,9 @@ var Soccer;
         draw() {
             Soccer.crc2.beginPath();
             Soccer.crc2.arc(this.position.x, this.position.y, 10, 0, 2 * Math.PI);
+            Soccer.crc2.font = "2px serif";
+            Soccer.crc2.fillText("referee", 3, 3);
+            Soccer.crc2.fill();
             Soccer.crc2.fillStyle = this.color;
             Soccer.crc2.fill();
             Soccer.crc2.closePath();

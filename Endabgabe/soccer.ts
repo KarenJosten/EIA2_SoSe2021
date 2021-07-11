@@ -95,9 +95,15 @@ namespace Soccer {
             let secondTeam: Player = new Player();
             //secondTeam.colorTeamTwo = "red";
             secondTeam.colorTeamTwo = player[1];
+            secondTeam.position.x = 500; // setzt position.x von Linesman
+            secondTeam.position.y = 100;
+            secondTeam.velocity.x = Math.random();
             moveables.push(secondTeam);
             }
         }
+        //hide form Elements and start game
+        form.classList.add("hidden");
+        start.classList.add("hidden");
 }
 
     function drawSoccerfield(): void {
