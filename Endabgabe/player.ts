@@ -4,10 +4,10 @@ namespace Soccer {
         public colorTeamOne: string; 
         public position: Vector;
         public velocity: Vector;
-        protected precision: number;
+        public precisionMax: string;
+        public precisionMin: string;
         protected playerNumber: number;
         protected team: number;
-        protected radius: number;
         protected changeNumber: boolean;
         
 

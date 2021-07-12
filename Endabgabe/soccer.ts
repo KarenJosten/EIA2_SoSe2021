@@ -1,16 +1,22 @@
-/*Code mit Hilfe von Julia Käppeler und Rebecca Räschke erstellt*/
+/*Code mit Hilfe von Julia Käppeler und Rebecca Räschke erstellt
+
+Endabgabe: Fußballspiel
+Name: Karen Josten
+Matrikelnummer: 265754
+Datum: 19.07.2021*/
 
 namespace Soccer {
     export enum PLAYER_EVENT {
-        BALL_SHOOTS = "ballShoots",
-        CHANGE_PLAYER = "changePlayer"
+        CHASE_BALL,
+        BALL_SHOOTS,
+        CHANGE_PLAYER
     }
 
     window.addEventListener("load", handleLoad);
 
     export let crc2: CanvasRenderingContext2D;
     let moveables: Moveable[] = [];
-    let player: string[] = [];
+    let formArray: string[] = [];
 
     let form: HTMLElement;
     let start: HTMLElement;
@@ -32,9 +38,12 @@ namespace Soccer {
         form = <HTMLElement>document.querySelector("form");
         form.addEventListener("change", handleChange);
 
-        start = <HTMLElement>document.querySelector("#start");
+        start = <HTMLElement>document.querySelector("button");
         start.addEventListener("click", createPlayer);
 
+
+        //canvas.addEventListener("pointerup", switchPlayer);
+        //oder so:
         //canvas.addEventListener(PLAYER_EVENT.CHANGE_PLAYER, changePlayer);
 
         window.setInterval(update, 15, soccerfield); //alle 15 ms updaten
@@ -43,9 +52,8 @@ namespace Soccer {
     function handleChange(_event: Event): void {
         _event.preventDefault();
         let formData: FormData = new FormData(document.forms[0]);
-        player = [];
-        for (let entry of formData) {
-            player.push(String(entry[1]));
+        for (let entry of formData) {//wieso entry?
+            formArray.push(String(entry[1]));
         }            
     }
 
@@ -86,18 +94,17 @@ namespace Soccer {
 
             if (i <= 10) {
             let firstTeam: Player = new Player();
-            //firstTeam.colorTeamOne = "blue";
-            firstTeam.colorTeamOne = player[0];
+            firstTeam.colorTeamOne = formArray[0];
+            firstTeam.precisionMax = formArray[4] + "px";
+            firstTeam.precisionMin = formArray[5] + "px";
             moveables.push(firstTeam);
             }
 
             else {
             let secondTeam: Player = new Player();
-            //secondTeam.colorTeamTwo = "red";
-            secondTeam.colorTeamTwo = player[1];
-            secondTeam.position.x = 500; // setzt position.x von Linesman
-            secondTeam.position.y = 100;
-            secondTeam.velocity.x = Math.random();
+            secondTeam.colorTeamTwo = formArray[1];
+            secondTeam.precisionMax = formArray[4] + "px";
+            secondTeam.precisionMin = formArray[5] + "px";
             moveables.push(secondTeam);
             }
         }
@@ -105,6 +112,7 @@ namespace Soccer {
         form.classList.add("hidden");
         start.classList.add("hidden");
 }
+
 
     function drawSoccerfield(): void {
         crc2.fillStyle = "#4c8527";
@@ -257,4 +265,18 @@ namespace Soccer {
             moveable.move(1);
         }
     }
+
+    /* function switchPlayer(_event: PointerEvent): void {
+
+        let newPlayer: number = Math.floor(Math.random() * 2);
+        // tslint:disable-next-line: no-unused-expression
+        let position: Vector = new Vector(_event.clientX - 100, _event.clientY);
+
+        switch (newPlayer) {
+            case 0:
+                let player: Player = new Player(position); // Neuer Spieler
+                moveables.push(player);
+                break;
+        }
+    } */
 }
