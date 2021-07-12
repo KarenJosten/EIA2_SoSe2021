@@ -2,6 +2,7 @@ body {
     justify-content: center;
     text-align: center;
     background-color: #35682d;
+    background-size: cover;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
 }

@@ -4,14 +4,14 @@ var Soccer;
     class Moveable {
         constructor(_position) {
             this.expendable = false;
-            this.hitRadius = 0;
             let a = -Math.random();
             let b = Math.random();
             this.velocity = new Soccer.Vector(a, b);
             //feste position ohne Math.radnom, damit die nicht mehr am Rand kleben
-            let x = 450;
-            let y = 100;
+            let x = 900 * Math.random();
+            let y = 600 * Math.random();
             this.position = new Soccer.Vector(x, y);
+            this.radius = 30;
         }
         /*   public change(): void {
               this.expendable = true;

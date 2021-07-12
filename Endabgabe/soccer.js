@@ -1,15 +1,21 @@
 "use strict";
-/*Code mit Hilfe von Julia Käppeler und Rebecca Räschke erstellt*/
+/*Code mit Hilfe von Julia Käppeler und Rebecca Räschke erstellt
+
+Endabgabe: Fußballspiel
+Name: Karen Josten
+Matrikelnummer: 265754
+Datum: 19.07.2021*/
 var Soccer;
 (function (Soccer) {
     let PLAYER_EVENT;
     (function (PLAYER_EVENT) {
-        PLAYER_EVENT["BALL_SHOOTS"] = "ballShoots";
-        PLAYER_EVENT["CHANGE_PLAYER"] = "changePlayer";
+        PLAYER_EVENT[PLAYER_EVENT["CHASE_BALL"] = 0] = "CHASE_BALL";
+        PLAYER_EVENT[PLAYER_EVENT["BALL_SHOOTS"] = 1] = "BALL_SHOOTS";
+        PLAYER_EVENT[PLAYER_EVENT["CHANGE_PLAYER"] = 2] = "CHANGE_PLAYER";
     })(PLAYER_EVENT = Soccer.PLAYER_EVENT || (Soccer.PLAYER_EVENT = {}));
     window.addEventListener("load", handleLoad);
     let moveables = [];
-    let player = [];
+    let formArray = [];
     let form;
     let start;
     function handleLoad(_event) {
@@ -24,17 +30,18 @@ var Soccer;
         createBall(1);
         form = document.querySelector("form");
         form.addEventListener("change", handleChange);
-        start = document.querySelector("#start");
+        start = document.querySelector("button");
         start.addEventListener("click", createPlayer);
+        //canvas.addEventListener("pointerup", switchPlayer);
+        //oder so:
         //canvas.addEventListener(PLAYER_EVENT.CHANGE_PLAYER, changePlayer);
         window.setInterval(update, 15, soccerfield); //alle 15 ms updaten
     }
     function handleChange(_event) {
         _event.preventDefault();
         let formData = new FormData(document.forms[0]);
-        player = [];
-        for (let entry of formData) {
-            player.push(String(entry[1]));
+        for (let entry of formData) { //wieso entry?
+            formArray.push(String(entry[1]));
         }
     }
     /*  function changePlayer(): void {
@@ -68,17 +75,16 @@ var Soccer;
         for (let i = 0; i < 22; i++) {
             if (i <= 10) {
                 let firstTeam = new Soccer.Player();
-                //firstTeam.colorTeamOne = "blue";
-                firstTeam.colorTeamOne = player[0];
+                firstTeam.colorTeamOne = formArray[0];
+                firstTeam.precisionMax = formArray[4] + "px";
+                firstTeam.precisionMin = formArray[5] + "px";
                 moveables.push(firstTeam);
             }
             else {
                 let secondTeam = new Soccer.Player();
-                //secondTeam.colorTeamTwo = "red";
-                secondTeam.colorTeamTwo = player[1];
-                secondTeam.position.x = 500; // setzt position.x von Linesman
-                secondTeam.position.y = 100;
-                secondTeam.velocity.x = Math.random();
+                secondTeam.colorTeamTwo = formArray[1];
+                secondTeam.precisionMax = formArray[4] + "px";
+                secondTeam.precisionMin = formArray[5] + "px";
                 moveables.push(secondTeam);
             }
         }
@@ -216,5 +222,18 @@ var Soccer;
             moveable.move(1);
         }
     }
+    /* function switchPlayer(_event: PointerEvent): void {
+
+        let newPlayer: number = Math.floor(Math.random() * 2);
+        // tslint:disable-next-line: no-unused-expression
+        let position: Vector = new Vector(_event.clientX - 100, _event.clientY);
+
+        switch (newPlayer) {
+            case 0:
+                let player: Player = new Player(position); // Neuer Spieler
+                moveables.push(player);
+                break;
+        }
+    } */
 })(Soccer || (Soccer = {}));
 //# sourceMappingURL=soccer.js.map

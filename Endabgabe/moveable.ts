@@ -2,10 +2,10 @@ namespace Soccer {
 
     export abstract class Moveable {
         public expendable: boolean = false;
+        public radius: number;
         protected color: string;
         protected velocity: Vector;
         protected position: Vector;
-        protected hitRadius: number = 0;
         
         constructor(_position?: Vector) { //brauchen wir hier auch _velocity??
             let a: number = - Math.random();
@@ -13,9 +13,10 @@ namespace Soccer {
             this.velocity = new Vector(a, b);
 
             //feste position ohne Math.radnom, damit die nicht mehr am Rand kleben
-            let x: number = 450;
-            let y: number = 100;
+            let x: number = 900 * Math.random();
+            let y: number = 600 * Math.random();
             this.position = new Vector(x, y);
+            this.radius = 30;
     } 
 
   /*   public change(): void {
