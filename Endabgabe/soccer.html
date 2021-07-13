@@ -18,17 +18,17 @@
     <body>
         <h1>Mini Fifa 2021</h1>
         <div class="formelements">
-        <form>
+        <form id="form">
         <fieldset>
         <legend>Create your own Mini Fifa!</legend>
             Choose color for <br>first team:            
             <div>
-		        <input id="colorFirstTeam" class="colorFirstTeam" type="color" name="yerseyColor" value="#ff0000">
+		        <input class="colorFirstTeam" type="color" name="jerseyColor" value="#ff0000">
 		    <hr/>
             </div>
             Choose color for <br>second team:
             <div>
-		        <input class="jerseyColor" type="color" name="yerseyColor" value="#0000ff">
+		        <input class="jerseyColor" type="color" name="jerseyColor2" value="#0000ff">
 		    <hr/>
             </div>
             Choose max velocity:
@@ -61,11 +61,13 @@
             </div>
             </fieldset>
         </form>
-        <button>START</button>
+        <button id="start">START</button>
     </div>
     <p id="score">0 : 0</p>
     <p id="ballb">Ballbesitz: </p>
+        <div id="userclick">
             <canvas width="900" height="600" id="canvas"></canvas>
+        </div>
             <footer> 
                 Karen Josten | 265754 | MKB4 | Hochschule Furtwangen | Entwicklung Interaktiver Anwendungen 2
             </footer>

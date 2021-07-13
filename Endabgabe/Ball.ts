@@ -1,7 +1,7 @@
 namespace Soccer {
     export class Ball extends Moveable { 
+        static position: Vector;
         protected color: string;
-        protected position: Vector;
         protected velocity: Vector;
 
         constructor(_position?: Vector) {
@@ -29,6 +29,16 @@ namespace Soccer {
         if (this.position.y + 10 > 600 || this.position.y - 5 < 0) {
             this.velocity.y = -this.velocity.y;
         }
+       /*  if (this.position.x == 900 && this.position.y == 300) {
+            alert("goal!");
+        }
+        if (this.position.x == 0 && this.position.y == 300) {
+            alert("goal!");
+        } */
+    }
+
+    public goal(): void {
+       //
     }
 
     public draw(): void {   

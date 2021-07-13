@@ -24,6 +24,15 @@ var Soccer;
             if (this.position.y + 10 > 600 || this.position.y - 5 < 0) {
                 this.velocity.y = -this.velocity.y;
             }
+            /*  if (this.position.x == 900 && this.position.y == 300) {
+                 alert("goal!");
+             }
+             if (this.position.x == 0 && this.position.y == 300) {
+                 alert("goal!");
+             } */
+        }
+        goal() {
+            //
         }
         draw() {
             Soccer.crc2.beginPath();
