@@ -1,8 +1,6 @@
 namespace Soccer {
 
     export abstract class Moveable {
-        public expendable: boolean = false;
-        public radius: number;
         protected color: string;
         protected velocity: Vector;
         protected position: Vector;
@@ -16,15 +14,14 @@ namespace Soccer {
             let x: number = 900 * Math.random();
             let y: number = 600 * Math.random();
             this.position = new Vector(x, y);
-            this.radius = 30;
     } 
 
-  /*   public change(): void {
-        this.expendable = true;
-    } */
+    public action(_timeslice: number): void {
+        //
+    }
 
     public move(_timeslice: number): void {
-        this.position.add(this.velocity);
+        //this.position.add(this.velocity);
 
         if (this.position.x + 10 > 900 || this.position.x - 10 < 0) {
             this.velocity.x = -this.velocity.x;
@@ -32,6 +29,10 @@ namespace Soccer {
         if (this.position.y + 10 > 600 || this.position.y - 10 < 0) {
             this.velocity.y = -this.velocity.y;
         }
+    }
+
+    public moveToBall(_positionBall: Vector): void {
+        //
     }
 
     public draw(): void {
