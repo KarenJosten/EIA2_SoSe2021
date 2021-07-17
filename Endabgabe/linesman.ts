@@ -1,29 +1,23 @@
 namespace Soccer {
     export class Linesman extends Moveable { 
-        public position: Vector;
-        public velocity: Vector;
+        //public velocity: Vector;
         protected color: string;
 
         constructor(_position?: Vector) {
-            super(_position);
+            super(_position); //konstruktor einer abstrakten Klasse braucht super
             let x: number = 900 * Math.random();
-            let y: number = 590;
+            let y: number = 640;
             let a: number = - 0.5;
             let b: number = 0;
             this.position = new Vector(x, y);
-            //this.position = _position;
-            this.color = "yellow";
-
-            if (_position) 
-            this.position = _position;
-            else
-            this.position = new Vector(x, y);
             this.velocity = new Vector(a, b);
+            this.color = "yellow";
     }
+
     public move(_timeslice: number): void {
         this.position.add(this.velocity);
 
-        //mit Kollision
+        //Kollision
         if (this.position.x + 10 > 900 || this.position.x - 10 < 0) {
             this.velocity.x = -this.velocity.x;
         }

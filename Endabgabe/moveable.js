@@ -2,26 +2,18 @@
 var Soccer;
 (function (Soccer) {
     class Moveable {
-        constructor(_position) {
+        constructor(_position, _startPosition) {
             let a = -Math.random();
             let b = Math.random();
             this.velocity = new Soccer.Vector(a, b);
             //feste position ohne Math.radnom, damit die nicht mehr am Rand kleben
             let x = 900 * Math.random();
-            let y = 600 * Math.random();
+            let y = 650 * Math.random();
             this.position = new Soccer.Vector(x, y);
-        }
-        action(_timeslice) {
-            //
+            this.startPosition = new Soccer.Vector(x, y);
         }
         move(_timeslice) {
-            //this.position.add(this.velocity);
-            if (this.position.x + 10 > 900 || this.position.x - 10 < 0) {
-                this.velocity.x = -this.velocity.x;
-            }
-            if (this.position.y + 10 > 600 || this.position.y - 10 < 0) {
-                this.velocity.y = -this.velocity.y;
-            }
+            //
         }
         moveToBall(_positionBall) {
             //
