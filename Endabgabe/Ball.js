@@ -4,35 +4,51 @@ var Soccer;
     class Ball extends Soccer.Moveable {
         constructor(_position) {
             super(_position);
+            this.goal1 = 0;
+            this.goal2 = 0;
             let x = 450;
-            let y = 300;
-            let a = Math.random();
-            let b = Math.random(); //Ball geht nach unten, da Math.random positiv ist
+            let y = 325;
             this.position = new Soccer.Vector(x, y);
             this.color = "white";
-            if (_position)
-                this.position = _position;
-            else
-                this.position = new Soccer.Vector(x, y);
-            this.velocity = new Soccer.Vector(a, b);
+            let i = 450;
+            let j = 325;
+            this.fixPosition = new Soccer.Vector(i, j);
+            this.target = new Soccer.Vector(this.position.x, this.position.y);
         }
         move(_timeslice) {
+            //Ziel (klick) und aktueller Punkt
+            let difference = Soccer.Vector.getDifference(this.target, this.position); //weil static mit Vector. Different bestimmen vom Ziel und der pos vom Ball
+            this.velocity = new Soccer.Vector(difference.x / 10, difference.y / 10); //geschwi.x Richtung / 10 --> wo ball hin soll, neue Geschwindigkeit vom Ball
+            //gate first Team, left
+            let posXL = 0 - this.position.x;
+            let posYL = 325 - this.position.y;
+            let rad1 = Math.hypot(posYL, posXL);
+            //gate secondTeam, right
+            let posXR = 900 - this.position.x;
+            let posYR = 325 - this.position.y;
+            let rad2 = Math.hypot(posYR, posXR);
+            //let goal1: number = 0;
+            if (difference.length <= 10) {
+                this.velocity.x = 0;
+                this.velocity.y = 0; //wenn Ball nah genug an dem Ziel, dann keine velocity
+            }
             this.position.add(this.velocity);
-            if (this.position.x + 10 > 900 || this.position.x - 5 < 0) {
-                this.velocity.x = -this.velocity.x;
+            if (rad1 <= 50) {
+                this.goalLeft = document.querySelector("#goalTeam2");
+                this.goal1++;
+                this.goalLeft.innerHTML = this.goal1 + "";
+                Soccer.playerAction = Soccer.Action.STOP_GAME;
+                this.position.set(this.fixPosition.x, this.fixPosition.y);
+                this.target.set(this.fixPosition.x, this.fixPosition.y);
             }
-            if (this.position.y + 10 > 600 || this.position.y - 5 < 0) {
-                this.velocity.y = -this.velocity.y;
+            if (rad2 <= 50) {
+                this.goalRight = document.querySelector("#goalTeam1");
+                this.goal2++;
+                this.goalRight.innerHTML = this.goal2 + "";
+                Soccer.playerAction = Soccer.Action.STOP_GAME;
+                this.position.set(this.fixPosition.x, this.fixPosition.y);
+                this.target.set(this.fixPosition.x, this.fixPosition.y);
             }
-            /*  if (this.position.x == 900 && this.position.y == 300) {
-                 alert("goal!");
-             }
-             if (this.position.x == 0 && this.position.y == 300) {
-                 alert("goal!");
-             } */
-        }
-        goal() {
-            //
         }
         draw() {
             Soccer.crc2.beginPath();

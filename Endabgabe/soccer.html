@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8" />
 	<title>minififa</title>
@@ -16,7 +15,9 @@
     <title>SpaceSoccer</title>
 </head>
     <body>
-        <h1>Mini Fifa 2021</h1>
+        <h1>⚽ Mini Fifa 2021 ⚽</h1>
+        <h4>Score: <a id="goalTeam2">0</a> : <a id="goalTeam1">0</a></h4>
+        <p>Ballbesitz:<a id="atball"></a></p>
         <div class="formelements">
         <form id="form">
         <fieldset>
@@ -34,14 +35,14 @@
             Choose max velocity:
             <div>
             <span>
-		       31 <input class="slider" type="range" name="maxVelocity" min="31" max="60" step="1" value="31" /> 60
+		       16 <input class="slider" type="range" name="maxVelocity" min="21" max="40" step="1" value="16" /> 25
 		    </span>
             <hr/>
             </div>
             Choose min velocity:
             <div>
             <span>
-		       1 <input class="slider" type="range" name="minVelocity" min="1" max="30" step="1" value="1" /> 30
+		       1 <input class="slider" type="range" name="minVelocity" min="1" max="20" step="1" value="1" /> 15
 		    </span>
             <hr/>
             </div>
@@ -61,13 +62,46 @@
             </div>
             </fieldset>
         </form>
+        <!--PlayerStats-->
+        <form id="playerStats" class="hidden">
+            <h3>Press Shift for crowd!</h3><br>
+            <fieldset>
+                <legend>Show me the stats - Team 1!</legend>
+                    <select>
+                        <option value="goalkeeperTeamOne1" name="playerStats">Goalkeeper</option>
+                        <option value="playerTeamOne2" name="playerStats">Player 2</option>
+                        <option value="playerTeamOne3" name="playerStats">Player 3</option>
+                        <option value="playerTeamOne4" name="playerStats">Player 4</option>
+                        <option value="playerTeamOne5" name="playerStats">Player 5</option>
+                        <option value="playerTeamOne6" name="playerStats">Player 6</option>
+                        <option value="playerTeamOne7" name="playerStats">Player 7</option>
+                        <option value="playerTeamOne8" name="playerStats">Player 8</option>
+                        <option value="playerTeamOne9" name="playerStats">Player 9</option>
+                        <option value="playerTeamOne10" name="playerStats">Player 10</option>
+                        <option value="playerTeamOne11" name="playerStats">Player 11</option>
+                    </select>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Show me the stats - Team 2!</legend>
+                    <select>
+                        <option value="playerTeamTwo1" name="playerStats">Player 1</option>
+                        <option value="playerTeamTwo2" name="playerStats">Player 2</option>
+                        <option value="playerTeamTwo3" name="playerStats">Player 3</option>
+                        <option value="playerTeamTwo4" name="playerStats">Player 4</option>
+                        <option value="playerTeamTwo5" name="playerStats">Player 5</option>
+                        <option value="playerTeamTwo6" name="playerStats">Player 6</option>
+                        <option value="playerTeamTwo7" name="playerStats">Player 7</option>
+                        <option value="playerTeamTwo8" name="playerStats">Player 8</option>
+                        <option value="playerTeamTwo9" name="playerStats">Player 9</option>
+                        <option value="playerTeamTwo1" name="playerStats">Player 10</option>
+                        <option value="goalkeeperTeam0Two11" name="playerStats">Goalkeeper</option>
+                    </select>
+            </fieldset>
+            </form>
         <button id="start">START</button>
     </div>
-    <p id="score">0 : 0</p>
-    <p id="ballb">Ballbesitz: </p>
-        <div id="userclick">
-            <canvas width="900" height="600" id="canvas"></canvas>
-        </div>
+            <canvas width="900" height="650" id="canvas"></canvas>
             <footer> 
                 Karen Josten | 265754 | MKB4 | Hochschule Furtwangen | Entwicklung Interaktiver Anwendungen 2
             </footer>
