@@ -17,10 +17,18 @@ namespace Soccer {
 
     export let crc2: CanvasRenderingContext2D;
     let moveables: Moveable[] = [];
+    //color etc
     let formArray: string[] = [];
+    //team 1
+    let formArray1: string[] = [];
+    //team 2
+    let formArray2: string[] = [];
     let form: HTMLElement;
     let start: HTMLElement;
-    let playerStats: HTMLElement;
+    let deletePlayer: HTMLButtonElement;
+    let addPlayer: HTMLButtonElement;
+    let playerStatsTeamOne: HTMLElement;
+    let playerStatsTeamTwo: HTMLElement;
     let ball: Ball;
 
     let isSetTimer: boolean = false; //is timer set?
@@ -47,11 +55,21 @@ namespace Soccer {
         start = <HTMLElement>document.querySelector("#start");
         start.addEventListener("click", createPlayer);
 
-        playerStats = <HTMLElement>document.querySelector("#playerStats");
-        playerStats.addEventListener("change", getPlayerStats);
+        deletePlayer = <HTMLButtonElement>document.querySelector("#delete"); 
+        deletePlayer.addEventListener("click", getPlayerStatsTeamOne);
+
+        addPlayer = <HTMLButtonElement>document.querySelector("#addplayer"); 
+
+        playerStatsTeamOne = <HTMLElement>document.querySelector("#playerStatsTeamOne");
+        playerStatsTeamOne.addEventListener("change", getPlayerStatsTeamOne);
+
+        playerStatsTeamTwo = <HTMLElement>document.querySelector("#playerStatsTeamTwo");
+        playerStatsTeamTwo.addEventListener("change", getPlayerStatsTeamTwo);
 
         canvas.addEventListener("click", getClickPosition);
         window.addEventListener("keydown", playSound);
+
+        
         //animate image
         window.setInterval(update, 20, soccerfield); 
     }
@@ -66,8 +84,58 @@ namespace Soccer {
         let formData: FormData = new FormData(document.forms[0]); //safe in form Data
         formArray = [];
         for (let entry of formData) {//entry -> jeder Eintrag soll durchgegangen werden der Form Liste
-            formArray.push(String(entry[1])); //Einträge ins formArray pushen
+            //push elements in formArray
+            formArray.push(String(entry[1])); 
         }            
+    }
+
+    function getPlayerStatsTeamOne(_event: Event): void {
+        _event.preventDefault();
+        let formData: FormData = new FormData(document.forms[1]); //safe in form Data
+        formArray1 = [];
+        for (let entry of formData) {//entry -> jeder Eintrag soll durchgegangen werden der Form Liste
+            formArray1.push(String(entry[1])); //Einträge ins formArray pushen
+        }        
+        
+        let div: HTMLElement = <HTMLElement>document.getElementById("div1");
+        div.setAttribute("class", "statsOne");
+        
+        for (let b: number = 0; b < moveables.length; b++) {
+            let player1: Moveable = moveables[b];
+            //wenn player1 eine instanceof Player ist
+            if (player1 instanceof Player) { 
+                if (player1.playerNumber == formArray1[0] && player1.colorTeamOne) {
+                    div.innerHTML = "Player stats team 1: <br>" + "Player: " + player1.playerNumber + "<br>" + "Position x: " + Math.floor(player1.position.x) + "<br>" + "Position y: " + Math.floor(player1.position.y) + "<br>" + "Velocity: " + player1.velocity2 + "<br>" + "Precision: " + player1.precision;
+                }
+            }
+        }
+        deletePlayer.classList.remove("hidden");
+        addPlayer.classList.remove("hidden");
+    }
+
+    function getPlayerStatsTeamTwo(_event: Event): void {
+        
+        _event.preventDefault();
+        let formData: FormData = new FormData(document.forms[2]); //safe in form Data
+        formArray2 = [];
+        for (let entry of formData) {//entry -> jeder Eintrag soll durchgegangen werden der Form Liste
+            formArray2.push(String(entry[1])); //Einträge ins formArray pushen
+        }       
+        let div: HTMLElement = <HTMLElement>document.getElementById("div1");
+        div.setAttribute("class", "statsOne");
+        
+        for (let b: number = 0; b < moveables.length; b++) {
+            let player2: Moveable = moveables[b];
+            //wenn player1 eine instanceof Player ist
+            if (player2 instanceof Player) { 
+                // && color for same team numbers
+                if (player2.playerNumber == formArray2[0] && player2.colorTeamTwo) {
+                    div.innerHTML = "Player stats team 2: <br>" + player2.playerNumber + "<br>" + "Position x: " + Math.floor(player2.position.x) + "<br>" + "Position y: " + Math.floor(player2.position.y) + "<br>" + "Velocity: " + player2.velocity2;
+                }
+            }
+        }
+        deletePlayer.classList.remove("hidden");
+        addPlayer.classList.remove("hidden");
     }
 
     function getClickPosition(_event: MouseEvent): void {
@@ -126,7 +194,7 @@ namespace Soccer {
                 goalkeeperTeamOne1.startPosition.y = 325;
                 goalkeeperTeamOne1.playerNumber = "1";
                 goalkeeperTeamOne1.velocity2 = getRandomVelocity(Number(formArray[3]), Number(formArray[2]));
-                goalkeeperTeamOne1 .precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
+                goalkeeperTeamOne1.precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
                 moveables.push(goalkeeperTeamOne1);
             }
 
@@ -135,9 +203,9 @@ namespace Soccer {
                 let playerTeamOne2: Player = new Player();
                 playerTeamOne2.colorTeamOne = formArray[0];
                 playerTeamOne2.position.x = 150;
-                playerTeamOne2.position.y = 100;
+                playerTeamOne2.position.y = 550;
                 playerTeamOne2.startPosition.x = 150; 
-                playerTeamOne2.startPosition.y = 100;
+                playerTeamOne2.startPosition.y = 550;
                 playerTeamOne2.playerNumber = "2";
                 playerTeamOne2.velocity2 = getRandomVelocity(Number(formArray[3]), Number(formArray[2]));
                 playerTeamOne2.precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
@@ -191,9 +259,9 @@ namespace Soccer {
                 let playerTeamOne6: Player = new Player();
                 playerTeamOne6.colorTeamOne = formArray[0];
                 playerTeamOne6.position.x = 750;
-                playerTeamOne6.position.y = 100;
+                playerTeamOne6.position.y = 550;
                 playerTeamOne6.startPosition.x = 750;
-                playerTeamOne6.startPosition.y = 100;
+                playerTeamOne6.startPosition.y = 550;
                 playerTeamOne6.playerNumber = "6";
                 playerTeamOne6.velocity2 = getRandomVelocity(Number(formArray[3]), Number(formArray[2]));
                 playerTeamOne6.precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
@@ -234,9 +302,9 @@ namespace Soccer {
                 let playerTeamOne9: Player = new Player();
                 playerTeamOne9.colorTeamOne = formArray[0];
                 playerTeamOne9.position.x = 450;
-                playerTeamOne9.position.y = 250;
+                playerTeamOne9.position.y = 400;
                 playerTeamOne9.startPosition.x = 450;
-                playerTeamOne9.startPosition.y = 250;
+                playerTeamOne9.startPosition.y = 400;
                 playerTeamOne9.playerNumber = "9";
                 playerTeamOne9.velocity2 = getRandomVelocity(Number(formArray[3]), Number(formArray[2]));
                 playerTeamOne9.precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
@@ -305,9 +373,9 @@ namespace Soccer {
                 let playerTeamTwo3: Player = new Player();
                 playerTeamTwo3.colorTeamTwo = formArray[1];
                 playerTeamTwo3.position.x = 450;
-                playerTeamTwo3.position.y = 400;
+                playerTeamTwo3.position.y = 250;
                 playerTeamTwo3.startPosition.x = 450;
-                playerTeamTwo3.startPosition.y = 400;
+                playerTeamTwo3.startPosition.y = 250;
                 playerTeamTwo3.playerNumber = "3";
                 playerTeamTwo3.velocity2 = getRandomVelocity(Number(formArray[3]), Number(formArray[2]));
                 playerTeamTwo3.precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
@@ -348,9 +416,9 @@ namespace Soccer {
                 let playerTeamTwo6: Player = new Player();
                 playerTeamTwo6.colorTeamTwo = formArray[1];
                 playerTeamTwo6.position.x = 150;
-                playerTeamTwo6.position.y = 550;
+                playerTeamTwo6.position.y = 100;
                 playerTeamTwo6.startPosition.x = 150;
-                playerTeamTwo6.startPosition.y = 550;
+                playerTeamTwo6.startPosition.y = 100;
                 playerTeamTwo6.playerNumber = "6";
                 playerTeamTwo6.velocity2 = getRandomVelocity(Number(formArray[3]), Number(formArray[2]));
                 playerTeamTwo6.precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
@@ -404,9 +472,9 @@ namespace Soccer {
                 let playerTeamTwo10: Player = new Player();
                 playerTeamTwo10.colorTeamTwo = formArray[1];
                 playerTeamTwo10.position.x = 750;
-                playerTeamTwo10.position.y = 550;
+                playerTeamTwo10.position.y = 100;
                 playerTeamTwo10.startPosition.x = 750;
-                playerTeamTwo10.startPosition.y = 550;
+                playerTeamTwo10.startPosition.y = 100;
                 playerTeamTwo10.playerNumber = "10";
                 playerTeamTwo10.velocity2 = getRandomVelocity(Number(formArray[3]), Number(formArray[2]));
                 playerTeamTwo10.precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
@@ -415,7 +483,7 @@ namespace Soccer {
 
             //11 Spieler Team2
             if (i == 21) {
-                let goalkeeperTeamTwo11: Player = new Player();
+                let goalkeeperTeamTwo11: Player = new Player(); 
                 goalkeeperTeamTwo11.colorTeamTwo = formArray[1];
                 goalkeeperTeamTwo11.position.x = 850;
                 goalkeeperTeamTwo11.position.y = 325;
@@ -432,19 +500,9 @@ namespace Soccer {
         form.classList.add("hidden");
         start.classList.add("hidden");
         //show playerStats, remove class hidden
-        playerStats.classList.remove("hidden");
+        playerStatsTeamOne.classList.remove("hidden");
+        playerStatsTeamTwo.classList.remove("hidden");
 }
-    function getPlayerStats(): void {
-       //
-    }   
-    /* function getPlayerStats(): void {
-        //select = document.querySelector("select");
-        for (let i: number = 0; i > select.options.length; i++) {
-                if (select.options[i].text == "Player 1") {
-                    playerStats.innerHTML = "I AM PLAYER1";
-                }
-        }
-    } */ 
 
     function drawSoccerfield(): void {
         crc2.fillStyle = "#4c8527";
@@ -592,7 +650,7 @@ namespace Soccer {
             case Action.CHASE_BALL:
                 for (let moveable of moveables) {
                     moveable.move(1 / 15);
-                    moveable.moveToBall(posBall);
+                    moveable.moveToBall(posBall); //alle anderen moveables
                 }
                 break;
             case Action.STOP_GAME:
