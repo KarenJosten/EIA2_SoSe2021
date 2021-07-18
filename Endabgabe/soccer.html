@@ -16,7 +16,7 @@
 </head>
     <body>
         <h1>⚽ Mini Fifa 2021 ⚽</h1>
-        <h4>Score: <a id="goalTeam2">0</a> : <a id="goalTeam1">0</a></h4>
+        <h4>Score: <a id="goalTeam1">0</a> : <a id="goalTeam2">0</a></h4>
         <p>Ballbesitz:<a id="atball"></a></p>
         <div class="formelements">
         <form id="form">
@@ -62,43 +62,51 @@
             </div>
             </fieldset>
         </form>
+        <h3>Press any key for crowd!</h3><br>
         <!--PlayerStats-->
-        <form id="playerStats" class="hidden">
-            <h3>Press Shift for crowd!</h3><br>
+        <form id="playerStatsTeamOne" class="hidden">
             <fieldset>
                 <legend>Show me the stats - Team 1!</legend>
-                    <select>
-                        <option value="goalkeeperTeamOne1" name="playerStats">Goalkeeper</option>
-                        <option value="playerTeamOne2" name="playerStats">Player 2</option>
-                        <option value="playerTeamOne3" name="playerStats">Player 3</option>
-                        <option value="playerTeamOne4" name="playerStats">Player 4</option>
-                        <option value="playerTeamOne5" name="playerStats">Player 5</option>
-                        <option value="playerTeamOne6" name="playerStats">Player 6</option>
-                        <option value="playerTeamOne7" name="playerStats">Player 7</option>
-                        <option value="playerTeamOne8" name="playerStats">Player 8</option>
-                        <option value="playerTeamOne9" name="playerStats">Player 9</option>
-                        <option value="playerTeamOne10" name="playerStats">Player 10</option>
-                        <option value="playerTeamOne11" name="playerStats">Player 11</option>
-                    </select>
-            </fieldset>
-            <br>
-            <fieldset>
-                <legend>Show me the stats - Team 2!</legend>
-                    <select>
-                        <option value="playerTeamTwo1" name="playerStats">Player 1</option>
-                        <option value="playerTeamTwo2" name="playerStats">Player 2</option>
-                        <option value="playerTeamTwo3" name="playerStats">Player 3</option>
-                        <option value="playerTeamTwo4" name="playerStats">Player 4</option>
-                        <option value="playerTeamTwo5" name="playerStats">Player 5</option>
-                        <option value="playerTeamTwo6" name="playerStats">Player 6</option>
-                        <option value="playerTeamTwo7" name="playerStats">Player 7</option>
-                        <option value="playerTeamTwo8" name="playerStats">Player 8</option>
-                        <option value="playerTeamTwo9" name="playerStats">Player 9</option>
-                        <option value="playerTeamTwo1" name="playerStats">Player 10</option>
-                        <option value="goalkeeperTeam0Two11" name="playerStats">Goalkeeper</option>
+                    <select id="select1" name="selection"> <!--braucht name um zugewiesen zu werden-->
+                        <option value="choosePlayer">Choose Player</option>
+                        <option value="1">Goalkeeper</option>
+                        <option value="2">Player 2</option>
+                        <option value="3">Player 3</option>
+                        <option value="4">Player 4</option>
+                        <option value="5">Player 5</option>
+                        <option value="6">Player 6</option>
+                        <option value="7">Player 7</option>
+                        <option value="8">Player 8</option>
+                        <option value="9">Player 9</option>
+                        <option value="10">Player 10</option>
+                        <option value="11">Player 11</option>
                     </select>
             </fieldset>
             </form>
+            <!--second Team-->
+            <form id="playerStatsTeamTwo" class="hidden">
+            <fieldset>
+                <legend>Show me the stats - Team 2!</legend>
+                    <select id="select2" name="selection2">
+                        <option value="1">Choose Player</option>
+                        <option value="2">Player 1</option>
+                        <option value="3">Player 2</option>
+                        <option value="4">Player 3</option>
+                        <option value="5">Player 4</option>
+                        <option value="6">Player 5</option>
+                        <option value="7">Player 6</option>
+                        <option value="8">Player 7</option>
+                        <option value="9">Player 8</option>
+                        <option value="10">Player 9</option>
+                        <option value="11">Player 10</option>
+                        <option value="12">Goalkeeper</option>
+                    </select>
+            </fieldset>
+            </form>
+            <div id="div1">
+            </div>
+        <button id="delete" class="hidden">DELETE</button>
+        <button id="addplayer" class="hidden">ADD PLAYER</button>
         <button id="start">START</button>
     </div>
             <canvas width="900" height="650" id="canvas"></canvas>

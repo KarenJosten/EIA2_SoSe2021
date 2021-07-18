@@ -16,10 +16,18 @@ var Soccer;
     })(Action = Soccer.Action || (Soccer.Action = {}));
     window.addEventListener("load", handleLoad);
     let moveables = [];
+    //color etc
     let formArray = [];
+    //team 1
+    let formArray1 = [];
+    //team 2
+    let formArray2 = [];
     let form;
     let start;
-    let playerStats;
+    let deletePlayer;
+    let addPlayer;
+    let playerStatsTeamOne;
+    let playerStatsTeamTwo;
     let ball;
     let isSetTimer = false; //is timer set?
     Soccer.playerAction = Action.CHASE_BALL;
@@ -38,8 +46,13 @@ var Soccer;
         form.addEventListener("change", handleChange);
         start = document.querySelector("#start");
         start.addEventListener("click", createPlayer);
-        playerStats = document.querySelector("#playerStats");
-        playerStats.addEventListener("change", getPlayerStats);
+        deletePlayer = document.querySelector("#delete");
+        deletePlayer.addEventListener("click", getPlayerStatsTeamOne);
+        addPlayer = document.querySelector("#addplayer");
+        playerStatsTeamOne = document.querySelector("#playerStatsTeamOne");
+        playerStatsTeamOne.addEventListener("change", getPlayerStatsTeamOne);
+        playerStatsTeamTwo = document.querySelector("#playerStatsTeamTwo");
+        playerStatsTeamTwo.addEventListener("change", getPlayerStatsTeamTwo);
         canvas.addEventListener("click", getClickPosition);
         window.addEventListener("keydown", playSound);
         //animate image
@@ -54,8 +67,52 @@ var Soccer;
         let formData = new FormData(document.forms[0]); //safe in form Data
         formArray = [];
         for (let entry of formData) { //entry -> jeder Eintrag soll durchgegangen werden der Form Liste
-            formArray.push(String(entry[1])); //Einträge ins formArray pushen
+            //push elements in formArray
+            formArray.push(String(entry[1]));
         }
+    }
+    function getPlayerStatsTeamOne(_event) {
+        _event.preventDefault();
+        let formData = new FormData(document.forms[1]); //safe in form Data
+        formArray1 = [];
+        for (let entry of formData) { //entry -> jeder Eintrag soll durchgegangen werden der Form Liste
+            formArray1.push(String(entry[1])); //Einträge ins formArray pushen
+        }
+        let div = document.getElementById("div1");
+        div.setAttribute("class", "statsOne");
+        for (let b = 0; b < moveables.length; b++) {
+            let player1 = moveables[b];
+            //wenn player1 eine instanceof Player ist
+            if (player1 instanceof Soccer.Player) {
+                if (player1.playerNumber == formArray1[0] && player1.colorTeamOne) {
+                    div.innerHTML = "Player stats team 1: <br>" + "Player: " + player1.playerNumber + "<br>" + "Position x: " + Math.floor(player1.position.x) + "<br>" + "Position y: " + Math.floor(player1.position.y) + "<br>" + "Velocity: " + player1.velocity2 + "<br>" + "Precision: " + player1.precision;
+                }
+            }
+        }
+        deletePlayer.classList.remove("hidden");
+        addPlayer.classList.remove("hidden");
+    }
+    function getPlayerStatsTeamTwo(_event) {
+        _event.preventDefault();
+        let formData = new FormData(document.forms[2]); //safe in form Data
+        formArray2 = [];
+        for (let entry of formData) { //entry -> jeder Eintrag soll durchgegangen werden der Form Liste
+            formArray2.push(String(entry[1])); //Einträge ins formArray pushen
+        }
+        let div = document.getElementById("div1");
+        div.setAttribute("class", "statsOne");
+        for (let b = 0; b < moveables.length; b++) {
+            let player2 = moveables[b];
+            //wenn player1 eine instanceof Player ist
+            if (player2 instanceof Soccer.Player) {
+                // && color for same team numbers
+                if (player2.playerNumber == formArray2[0] && player2.colorTeamTwo) {
+                    div.innerHTML = "Player stats team 2: <br>" + player2.playerNumber + "<br>" + "Position x: " + Math.floor(player2.position.x) + "<br>" + "Position y: " + Math.floor(player2.position.y) + "<br>" + "Velocity: " + player2.velocity2;
+                }
+            }
+        }
+        deletePlayer.classList.remove("hidden");
+        addPlayer.classList.remove("hidden");
     }
     function getClickPosition(_event) {
         let clickPosition = new Soccer.Vector(_event.clientX - Soccer.crc2.canvas.offsetLeft, _event.clientY - Soccer.crc2.canvas.offsetTop);
@@ -114,9 +171,9 @@ var Soccer;
                 let playerTeamOne2 = new Soccer.Player();
                 playerTeamOne2.colorTeamOne = formArray[0];
                 playerTeamOne2.position.x = 150;
-                playerTeamOne2.position.y = 100;
+                playerTeamOne2.position.y = 550;
                 playerTeamOne2.startPosition.x = 150;
-                playerTeamOne2.startPosition.y = 100;
+                playerTeamOne2.startPosition.y = 550;
                 playerTeamOne2.playerNumber = "2";
                 playerTeamOne2.velocity2 = getRandomVelocity(Number(formArray[3]), Number(formArray[2]));
                 playerTeamOne2.precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
@@ -166,9 +223,9 @@ var Soccer;
                 let playerTeamOne6 = new Soccer.Player();
                 playerTeamOne6.colorTeamOne = formArray[0];
                 playerTeamOne6.position.x = 750;
-                playerTeamOne6.position.y = 100;
+                playerTeamOne6.position.y = 550;
                 playerTeamOne6.startPosition.x = 750;
-                playerTeamOne6.startPosition.y = 100;
+                playerTeamOne6.startPosition.y = 550;
                 playerTeamOne6.playerNumber = "6";
                 playerTeamOne6.velocity2 = getRandomVelocity(Number(formArray[3]), Number(formArray[2]));
                 playerTeamOne6.precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
@@ -206,9 +263,9 @@ var Soccer;
                 let playerTeamOne9 = new Soccer.Player();
                 playerTeamOne9.colorTeamOne = formArray[0];
                 playerTeamOne9.position.x = 450;
-                playerTeamOne9.position.y = 250;
+                playerTeamOne9.position.y = 400;
                 playerTeamOne9.startPosition.x = 450;
-                playerTeamOne9.startPosition.y = 250;
+                playerTeamOne9.startPosition.y = 400;
                 playerTeamOne9.playerNumber = "9";
                 playerTeamOne9.velocity2 = getRandomVelocity(Number(formArray[3]), Number(formArray[2]));
                 playerTeamOne9.precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
@@ -272,9 +329,9 @@ var Soccer;
                 let playerTeamTwo3 = new Soccer.Player();
                 playerTeamTwo3.colorTeamTwo = formArray[1];
                 playerTeamTwo3.position.x = 450;
-                playerTeamTwo3.position.y = 400;
+                playerTeamTwo3.position.y = 250;
                 playerTeamTwo3.startPosition.x = 450;
-                playerTeamTwo3.startPosition.y = 400;
+                playerTeamTwo3.startPosition.y = 250;
                 playerTeamTwo3.playerNumber = "3";
                 playerTeamTwo3.velocity2 = getRandomVelocity(Number(formArray[3]), Number(formArray[2]));
                 playerTeamTwo3.precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
@@ -312,9 +369,9 @@ var Soccer;
                 let playerTeamTwo6 = new Soccer.Player();
                 playerTeamTwo6.colorTeamTwo = formArray[1];
                 playerTeamTwo6.position.x = 150;
-                playerTeamTwo6.position.y = 550;
+                playerTeamTwo6.position.y = 100;
                 playerTeamTwo6.startPosition.x = 150;
-                playerTeamTwo6.startPosition.y = 550;
+                playerTeamTwo6.startPosition.y = 100;
                 playerTeamTwo6.playerNumber = "6";
                 playerTeamTwo6.velocity2 = getRandomVelocity(Number(formArray[3]), Number(formArray[2]));
                 playerTeamTwo6.precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
@@ -364,9 +421,9 @@ var Soccer;
                 let playerTeamTwo10 = new Soccer.Player();
                 playerTeamTwo10.colorTeamTwo = formArray[1];
                 playerTeamTwo10.position.x = 750;
-                playerTeamTwo10.position.y = 550;
+                playerTeamTwo10.position.y = 100;
                 playerTeamTwo10.startPosition.x = 750;
-                playerTeamTwo10.startPosition.y = 550;
+                playerTeamTwo10.startPosition.y = 100;
                 playerTeamTwo10.playerNumber = "10";
                 playerTeamTwo10.velocity2 = getRandomVelocity(Number(formArray[3]), Number(formArray[2]));
                 playerTeamTwo10.precision = getRandomPrecision(Number(formArray[5]), Number(formArray[4]));
@@ -390,19 +447,9 @@ var Soccer;
         form.classList.add("hidden");
         start.classList.add("hidden");
         //show playerStats, remove class hidden
-        playerStats.classList.remove("hidden");
+        playerStatsTeamOne.classList.remove("hidden");
+        playerStatsTeamTwo.classList.remove("hidden");
     }
-    function getPlayerStats() {
-        //
-    }
-    /* function getPlayerStats(): void {
-        //select = document.querySelector("select");
-        for (let i: number = 0; i > select.options.length; i++) {
-                if (select.options[i].text == "Player 1") {
-                    playerStats.innerHTML = "I AM PLAYER1";
-                }
-        }
-    } */
     function drawSoccerfield() {
         Soccer.crc2.fillStyle = "#4c8527";
         Soccer.crc2.fillRect(0, 0, Soccer.crc2.canvas.width, Soccer.crc2.canvas.height);
@@ -535,7 +582,7 @@ var Soccer;
             case Action.CHASE_BALL:
                 for (let moveable of moveables) {
                     moveable.move(1 / 15);
-                    moveable.moveToBall(posBall);
+                    moveable.moveToBall(posBall); //alle anderen moveables
                 }
                 break;
             case Action.STOP_GAME:

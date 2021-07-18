@@ -12,6 +12,7 @@ namespace Soccer {
 
         constructor(_position?: Vector, _startPosition?: Vector) { 
             super(_position, _startPosition);
+            this.velocity2 = 0;
         }    
         
         public draw(): void {   
@@ -39,7 +40,6 @@ namespace Soccer {
             let positionBall: Vector = _positionBall; //position vom Ball
             let posX: number = positionBall.x - this.position.x; //Differenz berechnen von Ball posx und player posx
             let posY: number = positionBall.y - this.position.y; //Differenz berechnen von Ball posy und player posy
-            
             let rad: number = Math.hypot(posY, posX); //hier hätte man auch length benutzen können Karen..., Radius berechnen für alle positionen um den player herum
 
             //100 == 30 Meter Wahrnehmungsradius
@@ -50,9 +50,9 @@ namespace Soccer {
             }
             if (rad <= 10) {  //wenn Radius kleiner gleich 10 (beim Ball angekommen) ist dann schieße den Ball
                 this.atBall = <HTMLElement>document.querySelector("#atball");
-                this.atBall.innerHTML = this.playerNumber;
+                this.atBall.innerHTML = "" + this.playerNumber;
+                //_ball.move(1 / 15, this.precision);
                 playerAction = Action.STOP_GAME;
-                
             }
             if (rad > 120) {
                 //wie laufen statt springen???

@@ -28,13 +28,13 @@ namespace Soccer {
         this.velocity = new Vector(difference.x / 10, difference.y / 10); //geschwi.x Richtung / 10 --> wo ball hin soll, neue Geschwindigkeit vom Ball
         
         //gate first Team, left
-        let posXL: number = 0 - this.position.x; 
-        let posYL: number = 325 - this.position.y; 
+        let posXL: number = 0 - this.position.x;
+        let posYL: number = 325 - this.position.y;
         let rad1: number = Math.hypot(posYL, posXL);
 
         //gate secondTeam, right
-        let posXR: number = 900 - this.position.x; 
-        let posYR: number = 325 - this.position.y; 
+        let posXR: number = 900 - this.position.x;
+        let posYR: number = 325 - this.position.y;
         let rad2: number = Math.hypot(posYR, posXR);
         //let goal1: number = 0;
 

@@ -4,6 +4,7 @@ var Soccer;
     class Player extends Soccer.Moveable {
         constructor(_position, _startPosition) {
             super(_position, _startPosition);
+            this.velocity2 = 0;
         }
         draw() {
             Soccer.crc2.beginPath();
@@ -37,7 +38,8 @@ var Soccer;
             }
             if (rad <= 10) { //wenn Radius kleiner gleich 10 (beim Ball angekommen) ist dann schieße den Ball
                 this.atBall = document.querySelector("#atball");
-                this.atBall.innerHTML = this.playerNumber;
+                this.atBall.innerHTML = "" + this.playerNumber;
+                //_ball.move(1 / 15, this.precision);
                 Soccer.playerAction = Soccer.Action.STOP_GAME;
             }
             if (rad > 120) {
