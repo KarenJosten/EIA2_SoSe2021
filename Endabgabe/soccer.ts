@@ -6,7 +6,7 @@ Matrikelnummer: 265754
 Datum: 19.07.2021*/
 
 namespace Soccer {
-    export enum Action { //
+    export enum Action { 
         CHASE_BALL,
         STOP_GAME,
         CHANGE_PLAYER,
@@ -16,15 +16,19 @@ namespace Soccer {
     window.addEventListener("load", handleLoad);
 
     export let crc2: CanvasRenderingContext2D;
+    //all moveables (player, linesman, referee, ball)
     let moveables: Moveable[] = [];
-    //color etc
+    //color, velocity etc. form array
     let formArray: string[] = [];
-    //team 1
+    //team 1 form array
     let formArray1: string[] = [];
     //team 2
     let formArray2: string[] = [];
+    //form HTML
     let form: HTMLElement;
-    let start: HTMLElement;
+    //start button HTML
+    let start: HTMLButtonElement;
+    //button delete player
     let deletePlayer: HTMLButtonElement;
     let addPlayer: HTMLButtonElement;
     let playerStatsTeamOne: HTMLElement;
@@ -52,13 +56,15 @@ namespace Soccer {
         form = <HTMLElement>document.querySelector("form");
         form.addEventListener("change", handleChange);
 
-        start = <HTMLElement>document.querySelector("#start");
+        start = <HTMLButtonElement>document.querySelector("#start");
         start.addEventListener("click", createPlayer);
 
         deletePlayer = <HTMLButtonElement>document.querySelector("#delete"); 
-        deletePlayer.addEventListener("click", getPlayerStatsTeamOne);
+        deletePlayer.addEventListener("click", deletePlayerTeamOne);
+        deletePlayer.addEventListener("click", deletePlayerTeamTwo);
 
         addPlayer = <HTMLButtonElement>document.querySelector("#addplayer"); 
+        addPlayer.addEventListener("click", addPlayerTeamOne);
 
         playerStatsTeamOne = <HTMLElement>document.querySelector("#playerStatsTeamOne");
         playerStatsTeamOne.addEventListener("change", getPlayerStatsTeamOne);
@@ -106,11 +112,49 @@ namespace Soccer {
             if (player1 instanceof Player) { 
                 if (player1.playerNumber == formArray1[0] && player1.colorTeamOne) {
                     div.innerHTML = "Player stats team 1: <br>" + "Player: " + player1.playerNumber + "<br>" + "Position x: " + Math.floor(player1.position.x) + "<br>" + "Position y: " + Math.floor(player1.position.y) + "<br>" + "Velocity: " + player1.velocity2 + "<br>" + "Precision: " + player1.precision;
+                    
                 }
             }
         }
         deletePlayer.classList.remove("hidden");
         addPlayer.classList.remove("hidden");
+    }
+
+    function deletePlayerTeamOne(_event: MouseEvent): void {
+        for (let b: number = 0; b < moveables.length; b++) {
+            let player1: Moveable = moveables[b];
+            if (player1 instanceof Player) { 
+                if (player1.playerNumber == formArray1[0] && player1.colorTeamOne) {
+                    moveables.splice(b, 1);
+                }
+            }
+        }
+    }
+
+    function deletePlayerTeamTwo(_event: MouseEvent): void {
+        for (let b: number = 0; b < moveables.length; b++) {
+            let player2: Moveable = moveables[b];
+            if (player2 instanceof Player) { 
+                if (player2.playerNumber == formArray2[0] && player2.colorTeamOne) {
+                    moveables.splice(b, 1);
+                }
+            }
+        }
+    }
+
+    function addPlayerTeamOne(_event: MouseEvent): void {
+        let newPlayer: Player = new Player;
+        for (let b: number = 0; b < moveables.length; b++) {
+            let player1: Moveable = moveables[b];
+            if (player1 instanceof Player) { 
+                if (player1.playerNumber == formArray1[0] && player1.colorTeamOne) {
+                    newPlayer.playerNumber = "12";
+                    newPlayer.position.x = Math.random() * 900;
+                    newPlayer.position.y = Math.random() * 650;
+                    moveables.push(newPlayer);
+                }
+            }
+        }
     }
 
     function getPlayerStatsTeamTwo(_event: Event): void {

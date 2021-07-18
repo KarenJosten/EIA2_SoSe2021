@@ -15,15 +15,19 @@ var Soccer;
         Action[Action["FLY_BALL"] = 3] = "FLY_BALL";
     })(Action = Soccer.Action || (Soccer.Action = {}));
     window.addEventListener("load", handleLoad);
+    //all moveables (player, linesman, referee, ball)
     let moveables = [];
-    //color etc
+    //color, velocity etc. form array
     let formArray = [];
-    //team 1
+    //team 1 form array
     let formArray1 = [];
     //team 2
     let formArray2 = [];
+    //form HTML
     let form;
+    //start button HTML
     let start;
+    //button delete player
     let deletePlayer;
     let addPlayer;
     let playerStatsTeamOne;
@@ -47,8 +51,10 @@ var Soccer;
         start = document.querySelector("#start");
         start.addEventListener("click", createPlayer);
         deletePlayer = document.querySelector("#delete");
-        deletePlayer.addEventListener("click", getPlayerStatsTeamOne);
+        deletePlayer.addEventListener("click", deletePlayerTeamOne);
+        deletePlayer.addEventListener("click", deletePlayerTeamTwo);
         addPlayer = document.querySelector("#addplayer");
+        addPlayer.addEventListener("click", addPlayerTeamOne);
         playerStatsTeamOne = document.querySelector("#playerStatsTeamOne");
         playerStatsTeamOne.addEventListener("change", getPlayerStatsTeamOne);
         playerStatsTeamTwo = document.querySelector("#playerStatsTeamTwo");
@@ -91,6 +97,40 @@ var Soccer;
         }
         deletePlayer.classList.remove("hidden");
         addPlayer.classList.remove("hidden");
+    }
+    function deletePlayerTeamOne(_event) {
+        for (let b = 0; b < moveables.length; b++) {
+            let player1 = moveables[b];
+            if (player1 instanceof Soccer.Player) {
+                if (player1.playerNumber == formArray1[0] && player1.colorTeamOne) {
+                    moveables.splice(b, 1);
+                }
+            }
+        }
+    }
+    function deletePlayerTeamTwo(_event) {
+        for (let b = 0; b < moveables.length; b++) {
+            let player2 = moveables[b];
+            if (player2 instanceof Soccer.Player) {
+                if (player2.playerNumber == formArray2[0] && player2.colorTeamOne) {
+                    moveables.splice(b, 1);
+                }
+            }
+        }
+    }
+    function addPlayerTeamOne(_event) {
+        let newPlayer = new Soccer.Player;
+        for (let b = 0; b < moveables.length; b++) {
+            let player1 = moveables[b];
+            if (player1 instanceof Soccer.Player) {
+                if (player1.playerNumber == formArray1[0] && player1.colorTeamOne) {
+                    newPlayer.playerNumber = "12";
+                    newPlayer.position.x = Math.random() * 900;
+                    newPlayer.position.y = Math.random() * 650;
+                    moveables.push(newPlayer);
+                }
+            }
+        }
     }
     function getPlayerStatsTeamTwo(_event) {
         _event.preventDefault();
