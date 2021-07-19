@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>minififa</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+    <script src="Moveable.js" type="text/javascript" charset="utf-8"></script>
+    <script src="main.js" type="text/javascript" charset="utf-8"></script>
+    <script src="Player.js" type="text/javascript" charset="utf-8"></script>
+    <script src="Referee.js" type="text/javascript" charset="utf-8"></script>
+    <script src="Linesman.js" type="text/javascript" charset="utf-8"></script>
+    <script src="Ball.js" type="text/javascript" charset="utf-8"></script>
+    <script src="Vector.js" type="text/javascript" charset="utf-8"></script>
+    <title>Minisoccer</title>
+</head>
+    <body>
+        <h1>⚽ Mini Fifa 2021 ⚽</h1>
+        <h4>Score: <a id="goalTeam1">0</a> : <a id="goalTeam2">0</a></h4>
+        <p>Ball possession:<a id="atball"></a></p>
+        <div class="formelements">
+        <form id="form">
+        <fieldset>
+        <legend>Create your own Mini Fifa!</legend>
+            Choose color for <br>first team:            
+            <div>
+		        <input class="colorFirstTeam" type="color" name="jerseyColor" value="#ff0000">
+		    <hr/>
+            </div>
+            Choose color for <br>second team:
+            <div>
+		        <input class="jerseyColor" type="color" name="jerseyColor2" value="#0000ff">
+		    <hr/>
+            </div>
+            Choose max velocity:
+            <div>
+            <span>
+		       16 <input class="slider" type="range" name="maxVelocity" min="21" max="40" step="1" value="16" /> 25
+		    </span>
+            <hr/>
+            </div>
+            Choose min velocity:
+            <div>
+            <span>
+		       1 <input class="slider" type="range" name="minVelocity" min="1" max="20" step="1" value="1" /> 15
+		    </span>
+            <hr/>
+            </div>
+            Choose max precision:
+            <div>
+            <span>
+		       21 <input class="slider" type="range" name="Slider" min="21" max="40" step="1" value="21" /> 40
+               </span>
+		    <hr/>
+            </div>
+            Choose min precision:
+            <div>
+            <span>
+		       1 <input class="slider" type="range" name="Slider" min="1" max="20" step="1" value="1" /> 20
+		    </span>
+            <hr/>
+            </div>
+            </fieldset>
+        </form>
+        <h3>Press any key for crowd!</h3><br>
+        <!--PlayerStats-->
+        <form id="playerStatsTeamOne" class="hidden">
+            <fieldset>
+                <legend>Show me the stats - Team 1!</legend>
+                    <select id="select1" name="selection"> <!--braucht name um zugewiesen zu werden-->
+                        <option value="choosePlayer">Choose Player</option>
+                        <option value="1">Goalkeeper</option>
+                        <option value="2">Player 2</option>
+                        <option value="3">Player 3</option>
+                        <option value="4">Player 4</option>
+                        <option value="5">Player 5</option>
+                        <option value="6">Player 6</option>
+                        <option value="7">Player 7</option>
+                        <option value="8">Player 8</option>
+                        <option value="9">Player 9</option>
+                        <option value="10">Player 10</option>
+                        <option value="11">Player 11</option>
+                    </select>
+            </fieldset>
+            </form>
+            <!--second Team-->
+            <form id="playerStatsTeamTwo" class="hidden">
+            <fieldset>
+                <legend>Show me the stats - Team 2!</legend>
+                    <select id="select2" name="selection2">
+                        <option value="1">Choose Player</option>
+                        <option value="2">Player 1</option>
+                        <option value="3">Player 2</option>
+                        <option value="4">Player 3</option>
+                        <option value="5">Player 4</option>
+                        <option value="6">Player 5</option>
+                        <option value="7">Player 6</option>
+                        <option value="8">Player 7</option>
+                        <option value="9">Player 8</option>
+                        <option value="10">Player 9</option>
+                        <option value="11">Player 10</option>
+                        <option value="12">Goalkeeper</option>
+                    </select>
+            </fieldset>
+            </form>
+            <div id="div1">
+            </div>
+        <button id="delete" class="hidden">DELETE</button>
+        <button id="addplayer" class="hidden">ADD PLAYER</button>
+        <button id="start">START</button>
+    </div>
+            <canvas width="900" height="650" id="canvas"></canvas>
+            <footer> 
+                Karen Josten | 265754 | MKB4 | Hochschule Furtwangen | Entwicklung Interaktiver Anwendungen 2
+            </footer>
+    </body>
+</html>
